@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofertas — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/ofertas.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">🌱 Feira<span>Circular</span></a>
+      
+      <nav class="nav">
+        <a href="inicio.html" class="nav__btn">Início</a>
+        <a href="ofertas.html" class="nav__btn active">Ofertas</a>
+        <a href="cadastro.html" class="nav__btn">Cadastro</a>
+        <a href="doacoes.html" class="nav__btn">Doações</a>
+        <a href="painel.html" class="nav__btn">Painel</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container main">
+    
+    <div class="page-header">
+      <h1>Ofertas de Última Hora</h1>
+      <p>Apoie os feirantes de São Paulo comprando alimentos bons, por um preço justo.</p>
+    </div>
+
+    <!-- FILTROS -->
+    <section class="filtros">
+      <input type="text" id="filtro-busca" placeholder="🔍 Buscar por alimento ou barraca..." />
+      <select id="filtro-feira">
+        <option value="todas">Todas as feiras</option>
+      </select>
+    </section>
+
+    <!-- CARDS -->
+    <section class="grid-ofertas" id="lista-ofertas">
+      <!-- Injetado via JS -->
+    </section>
+
+    <!-- MENSAGEM DE VAZIO -->
+    <div id="msg-vazio" class="msg-vazio" style="display: none;">
+      <h3>Nenhuma oferta encontrada 😕</h3>
+      <p>Tente mudar a busca ou voltar mais tarde!</p>
+    </div>
+
+  </main>
+
+  <!-- JS -->
+  <script src="JS/ofertas.js"></script>
+</body>
+</html>

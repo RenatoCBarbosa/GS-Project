@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Excedentes — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/cadastro.css" />
+</head>
+<body>
+
+  <!-- HEADER PADRÃO -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">🌱 Feira<span>Circular</span></a>
+      
+      <nav class="nav">
+        <a href="inicio.html" class="nav__btn">Início</a>
+        <a href="ofertas.html" class="nav__btn">Ofertas</a>
+        <a href="cadastro.html" class="nav__btn active">Cadastro</a>
+        <a href="doacoes.html" class="nav__btn">Doações</a>
+        <a href="painel.html" class="nav__btn">Painel</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="container main">
+    
+    <div class="page-header">
+      <h1>Anunciar Excedente</h1>
+      <p>Preencha os dados abaixo para vender com desconto ou doar os alimentos que sobraram hoje.</p>
+    </div>
+
+    <div class="form-container">
+      <form id="form-cadastro">
+        
+        <!-- Dados da Barraca -->
+        <div class="form-section">
+          <h2>1. Identificação</h2>
+          <div class="form-row">
+            <label>
+              Nome da Barraca / Feirante
+              <input type="text" name="barraca" required placeholder="Ex.: Barraca do Zé" />
+            </label>
+            <label>
+              Localização (Feira)
+              <input type="text" name="local" required placeholder="Ex.: Feira da Vila Mariana" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Dados do Alimento -->
+        <div class="form-section">
+          <h2>2. Dados do Alimento</h2>
+          <div class="form-row">
+            <label>
+              Alimento
+              <input type="text" name="alimento" required placeholder="Ex.: Tomate Italiano" />
+            </label>
+            <label>
+              Quantidade (kg)
+              <input type="number" name="quantidade" min="0.5" step="0.5" required placeholder="Ex.: 15" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Preços e Modalidade -->
+        <div class="form-section">
+          <h2>3. Oferta e Destinação</h2>
+          <div class="form-row">
+            <label>
+              Preço Original (R$/kg)
+              <input type="number" name="precoOriginal" min="0" step="0.01" required placeholder="Ex.: 8.50" />
+            </label>
+            <label>
+              Preço com Desconto (R$/kg)
+              <input type="number" name="precoDesconto" min="0" step="0.01" placeholder="Deixe em branco se for apenas doação" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Destinação
+              <select name="tipo" required id="select-tipo">
+                <option value="venda">Apenas Venda com Desconto</option>
+                <option value="doacao">Apenas Doação</option>
+                <option value="ambos">Ambos (Venda e Doação)</option>
+              </select>
+            </label>
+            <label>
+              Horário Limite de Retirada
+              <input type="time" name="horario" required />
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Publicar Excedente</button>
+      </form>
+    </div>
+
+  </main>
+
+  <script src="JS/cadastro.js"></script>
+</body>
+</html>
