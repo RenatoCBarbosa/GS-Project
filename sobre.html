@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre o Projeto — Feira Circular</title>
+  <link rel="stylesheet" href="CSS/inicio.css" />
+  <link rel="stylesheet" href="CSS/cadastro.css" />
+  <link rel="stylesheet" href="CSS/sobre.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+        <a href="inicio.html" class="logo">
+            <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
+        </a>
+    
+        <!-- Botão Hambúrguer (aparece apenas no mobile via CSS) -->
+        <button class="menu-hamburguer" id="btn-menu" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="menu-dinamico">
+         <!-- O JS preenche os links ou o menu -->
+        </nav>
+    </div>
+</header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container main">
+    <div class="page-header">
+      <h1>Sobre o Feira Circular</h1>
+      <p>Menos desperdício, mais renda e mais alimentos aproveitados nas feiras livres de São Paulo.</p>
+    </div>
+
+    <!-- Seção 1: O Problema Abordado -->
+    <section class="content-section">
+      <h2>O Problema: O Desperdício nas Feiras</h2>
+      <p>Nas feiras livres de São Paulo, parte considerável dos produtos comercializados (frutas, verduras e legumes) permanece sem comprador até o encerramento das atividades. Por serem altamente perecíveis, esses alimentos perdem valor comercial devido ao amadurecimento, tempo de exposição ou à aparência ("alimentos feios"), mesmo quando ainda estão perfeitamente próprios para o consumo.</p>
+      <div class="destaque-box">
+        <p><strong>Consequências identificadas:</strong> Prejuízos financeiros para os feirantes, descarte desnecessário de alimentos, impacto ambiental de recursos desperdiçados e perda de oportunidades sociais para comunidades em situação de vulnerabilidade.</p>
+      </div>
+    </section>
+
+    <!-- Seção 2: A Solução Proposta -->
+    <section class="content-section">
+      <h2>A Solução Proposta</h2>
+      <p>O <strong>Feira Circular</strong> é uma plataforma digital voltada à gestão e intermediação de excedentes alimentares. A solução coloca o cidadão no centro da inovação (conceito <em>CitizenTech</em>), conectando feirantes, consumidores e organizações sociais em três frentes principais:</p>
+      
+      <div class="solucoes-grid">
+        <div class="solucao-card">
+          <h3>🛒 Venda com Desconto</h3>
+          <p>Consumidores consultam ofertas de última hora, visualizam preços reduzidos e quantidades, realizando reservas para retirada direta na barraca.</p>
+        </div>
+        <div class="solucao-card">
+          <h3>🤝 Doações para ONGs</h3>
+          <p>Organizações sociais cadastradas localizam alimentos próprios para consumo destinados à doação e solicitam a retirada de forma ágil.</p>
+        </div>
+        <div class="solucao-card">
+          <h3>📊 Painel do Feirante</h3>
+          <p>Ferramenta para o feirante recuperar receita, divulgar sua barraca digitalmente e acompanhar o controle de perdas e histórico de operações.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 3: Alinhamento com os ODS da ONU -->
+    <section class="content-section">
+      <h2>Alinhamento com os ODS</h2>
+      <p>O projeto está diretamente conectado aos Objetivos de Desenvolvimento Sustentável da ONU:</p>
+      <ul class="ods-list">
+        <li><strong>ODS 2 — Fome Zero e Agricultura Sustentável:</strong> Contribuição para o aproveitamento social de alimentos.</li>
+        <li><strong>ODS 11 — Cidades e Comunidades Sustentáveis:</strong> Desenvolvimento de uma solução tecnológica voltada a um problema urbano real.</li>
+        <li><strong>ODS 12 — Consumo e Produção Responsáveis:</strong> Incentivo direto à redução de perdas e desperdícios alimentares.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 4: Nossa Tecnologia e Impacto -->
+    <section class="content-section">
+    <h2>Nossa Tecnologia e Impacto</h2>
+    <p>O Feira Circular utiliza uma abordagem voltada ao cidadão, unindo tecnologia urbana e sustentabilidade alimentar.</p>
+  
+    <!-- Conteúdo extra escondido inicialmente -->
+    <div class="conteudo-extra" id="texto-expansivel">
+        <p>Além da interface leve e responsiva acessível por celulares e computadores, o sistema simula reservas em tempo real, controle de estoque de sobras por feirante e relatórios claros de redução de prejuízos. Isso garante que tanto pequenos comerciantes quanto ONGs consigam operar sem barreiras tecnológicas complexas.</p>
+    </div>
+
+    <!-- Botão Interativo -->
+    <button id="btn-saiba-mais" class="btn-detalhes">Saiba mais sobre a tecnologia</button>
+    </section>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="JS/auth.js"></script>
+</body>
+</html>

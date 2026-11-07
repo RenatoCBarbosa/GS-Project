@@ -1,0 +1,130 @@
+/*ESTILOS DA BARRA DE PESQUISA DO FAQ */
+
+.faq-search-container {
+  max-width: 800px;
+  margin: 0 auto 25px auto;
+}
+
+#faq-search {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#faq-search:focus {
+  border-color: #27ae60;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
+}
+
+/* ESTILOS DA PÁGINA FAQ (ACORDEÃO) */
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: #27ae60;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2c3e50;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #27ae60;
+}
+
+.faq-icon {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #27ae60;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 20px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Estado ativo quando aberto via JavaScript */
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Altura suficiente para o texto */
+  padding: 0 20px 20px 20px;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg); /* Transforma o + em um x / seta inclinada */
+}
+
+/* ==========================================
+   BOTÃO FLUTUANTE DO WHATSAPP (FIXO)
+   ========================================== */
+
+.whatsapp-float {
+  position: fixed !important;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Limpa o tamanho da imagem SVG para não estourar na tela */
+.whatsapp-float img {
+  width: 35px !important;
+  height: 35px !important;
+  object-fit: contain;
+  margin: 0;
+}
+
+.whatsapp-float:hover {
+  background-color: #20ba5a;
+  transform: scale(1.1);
+}

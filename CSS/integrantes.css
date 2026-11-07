@@ -1,0 +1,187 @@
+/* ==========================================
+   ESTILOS DO GRÁFICO DE INTEGRANTES (CONSTELAÇÃO)
+   ========================================== */
+
+.constelacao-container {
+  position: relative;
+  width: 700px;
+  height: 580px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Linha da órbita circular ao fundo (Espaçada e contínua) */
+.orbita-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.linha-orbita {
+  fill: none;
+  stroke: #27ae60;    /* Linha verde contínua do projeto */
+  stroke-width: 3;    /* Espessura visível e elegante */
+}
+
+/* Círculo Central com a Logo (Centro exato: x=350, y=290) */
+.circulo-central {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  border: 4px solid #27ae60;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.2);
+  z-index: 2;
+}
+
+.logo-central-img {
+  width: 85px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Nós dos Integrantes */
+.no-integrante {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Bolinha com a foto exata de 130x130 */
+.bolinha-foto {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #27ae60;
+  background-color: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bolinha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-integrante:hover .bolinha-foto {
+  transform: scale(1.1);
+  border-color: #219653;
+}
+
+/* Card de informações que aparece ao passar o mouse */
+.info-card {
+  position: absolute;
+  top: 140px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+.no-integrante:hover .info-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.info-card h3 {
+  font-size: 0.95rem;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.info-card p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.links-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.links-sociais a {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.links-sociais a:first-child {
+  background-color: #24292e; /* GitHub */
+}
+
+.links-sociais a:last-child {
+  background-color: #0a66c2; /* LinkedIn */
+}
+
+.links-sociais a:hover {
+  opacity: 0.85;
+}
+
+/* 
+  POSICIONAMENTO TRIGONOMÉTRICO EXATO PARA O RAIO 215 
+  (Centralizado em 350x290, subtraindo a metade da bolinha 65px para alinhar o eixo)
+*/
+.pos-1 { top: 10px;   left: 285px; } /* 0° (Topo) */
+.pos-2 { top: 142px;  right: 58px; } /* 72° (Direita Superior) */
+.pos-3 { bottom: 58px; right: 133px;} /* 144° (Direita Inferior) */
+.pos-4 { bottom: 58px; left: 133px; } /* 216° (Esquerda Inferior) */
+.pos-5 { top: 142px;  left: 58px;  } /* 288° (Esquerda Superior) */
+
+/* Responsividade para celulares */
+@media (max-width: 750px) {
+  .constelacao-container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .orbita-svg {
+    display: none;
+  }
+  .circulo-central {
+    position: relative;
+  }
+  .no-integrante {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+  .info-card {
+    position: relative;
+    top: 5px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}

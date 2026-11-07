@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Feira Circular</title>
+  <link rel="stylesheet" href="CSS/inicio.css" />
+  <link rel="stylesheet" href="CSS/cadastro.css" />
+  <link rel="stylesheet" href="CSS/faq.css" />
+</head>
+<body>
+
+  <!-- HEADER DINÂMICO -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
+      </a>
+      <nav class="nav" id="menu-dinamico">
+        <!-- O JS preenche os links -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container main">
+    <div class="page-header">
+      <h1>Perguntas Frequentes (FAQ)</h1>
+      <p>Tire suas dúvidas sobre o funcionamento do Feira Circular para feirantes, consumidores e ONGs.</p>
+    </div>
+
+   <!-- NOVA BARRA DE PESQUISA -->
+    <div class="faq-search-container">
+      <input type="text" id="faq-search" placeholder="🔍 Pesquise por uma dúvida (ex: feirante, taxa, cadastro)..." />
+    </div>
+
+    <div class="faq-container" id="faq-lista">
+      
+      <!-- Pergunta 1 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>O que é o Feira Circular?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>O Feira Circular é uma plataforma digital voltada a reduzir o desperdício de alimentos nas feiras livres de São Paulo, conectando feirantes, consumidores e organizações sociais para comercializar excedentes com desconto ou destiná-los à doação.</p>
+        </div>
+      </div>
+
+      <!-- Pergunta 2 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Como o feirante cadastra um alimento excedente?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>O feirante acessa a aba de cadastro na plataforma, preenche o nome da barraca, o tipo de alimento, a quantidade em kg, o preço original, o preço com desconto (ou marca como doação) e o horário limite de retirada.</p>
+        </div>
+      </div>
+
+      <!-- Pergunta 3 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Quais são os benefícios para os feirantes?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Os feirantes conseguem recuperar parte da receita de produtos que iriam para descarte, têm divulgação gratuita de suas barracas e contam com um painel de controle para gerenciar perdas e planejar melhor as compras futuras.</p>
+        </div>
+      </div>
+
+      <!-- Pergunta 4 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Há cobrança de taxas para usar a plataforma?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>Não. Na versão atual, o Feira Circular é uma iniciativa de impacto social e tecnológico totalmente gratuita para feirantes e organizações sociais.</p>
+        </div>
+
+      </div>
+
+      <!-- Pergunta 5 -->
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Como as organizações sociais solicitam doações?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer">
+          <p>As ONGs cadastradas acessam o mural de doações, filtram os alimentos próprios para consumo disponíveis nas feiras e combinam diretamente a retirada com o feirante dentro do prazo estabelecido.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mensagem de Nenhum Resultado -->
+    <div id="faq-vazio" style="display: none; text-align: center; margin-top: 30px; color: #666;">
+      <p>Nenhuma dúvida encontrada com esse termo. Tente usar outras palavras ou entre em contato conosco!</p>
+    </div>
+  </main>
+
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20FeiraCircular!" 
+     target="_blank" 
+     class="whatsapp-float" 
+     title="Fale conosco pelo WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="JS/auth.js"></script>
+  <script src="JS/faq.js"></script>
+</body>
+</html>

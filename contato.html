@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/inicio.css" />
+  <link rel="stylesheet" href="CSS/cadastro.css" />
+  <link rel="stylesheet" href="CSS/contato.css" />
+</head>
+<body>
+
+  <!-- HEADER DINÂMICO -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
+      </a>
+      <nav class="nav" id="menu-dinamico">
+        <!-- O JS preenche os links -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container main">
+    <div class="page-header">
+      <h1>Fale Conosco</h1>
+      <p>Tem dúvidas, sugestões ou quer levar o Feira Circular para a sua feira ? </p>
+        <p>Escolha o canal de preferência.</p>
+    </div>
+
+    <div class="form-container">
+      <!-- Formulário com validação -->
+      <form id="form-contato" novalidate>
+        <div class="form-section">
+          <h2>Envie sua mensagem</h2>
+          
+          <div class="form-row">
+            <label>
+              Nome Completo
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" />
+              <span class="erro-msg" id="erro-nome"></span>
+            </label>
+
+            <label>
+              E-mail
+              <input type="email" id="email" name="email" placeholder="seu@email.com" />
+              <span class="erro-msg" id="erro-email"></span>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label style="width: 100%;">
+              Assunto
+              <input type="text" id="assunto" name="assunto" placeholder="Ex: Parceria com Feirantes" />
+              <span class="erro-msg" id="erro-assunto"></span>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label style="width: 100%;">
+              Mensagem
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..."></textarea>
+              <span class="erro-msg" id="erro-mensagem"></span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Enviar Mensagem</button>
+      </form>
+
+      <!-- Feedback de Sucesso -->
+      <div id="msg-sucesso" class="msg-sucesso" style="display: none;">
+        <h3>Mensagem enviada com sucesso! 🎉</h3>
+        <p>Agradecemos o contato. Retornaremos em breve.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP (FIXO NA TELA) -->
+  <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20FeiraCircular!" 
+     target="_blank" 
+     class="whatsapp-float" 
+     title="Fale conosco pelo WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="JS/auth.js"></script>
+  <script src="JS/contato.js"></script>
+</body>
+</html>

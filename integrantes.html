@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrantes — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/inicio.css" />
+  <link rel="stylesheet" href="CSS/cadastro.css" />
+  <link rel="stylesheet" href="CSS/integrantes.css" />
+</head>
+<body>
+
+  <!-- HEADER DINÂMICO -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
+      </a>
+      <nav class="nav" id="menu-dinamico">
+        <!-- O JS preenche os links -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container main">
+    <div class="page-header">
+      <h1>Equipe do Projeto</h1>
+      <p>Passe o mouse sobre os integrantes para acessar os perfis no GitHub e LinkedIn.</p>
+    </div>
+
+    <!-- CONTAINER DO GRÁFICO (CONSTELAÇÃO COM MAIS ESPAÇO) -->
+    <div class="constelacao-container">
+      
+      <!-- Círculo Órbita SVG maior e espaçado (raio 215) -->
+      <svg class="orbita-svg" viewBox="0 0 700 580">
+        <circle cx="350" cy="290" r="215" class="linha-orbita" />
+      </svg>
+
+      <!-- Círculo Central com a Logo Oficial -->
+      <div class="circulo-central">
+        <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-central-img">
+      </div>
+
+      <!-- Integrante 1 (Topo) -->
+      <div class="no-integrante pos-1">
+        <div class="bolinha-foto">
+          <img src="https://via.placeholder.com/130" alt="Integrante 1">
+        </div>
+        <div class="info-card">
+          <h3>Nome 1</h3>
+          <p>RM: 00000</p>
+          <div class="links-sociais">
+            <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 2 (Direita Superior) -->
+      <div class="no-integrante pos-2">
+        <div class="bolinha-foto">
+          <img src="https://via.placeholder.com/130" alt="Integrante 2">
+        </div>
+        <div class="info-card">
+          <h3>Nome 2</h3>
+          <p>RM: 00000</p>
+          <div class="links-sociais">
+            <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 3 (Direita Inferior) -->
+      <div class="no-integrante pos-3">
+        <div class="bolinha-foto">
+          <img src="https://via.placeholder.com/130" alt="Integrante 3">
+        </div>
+        <div class="info-card">
+          <h3>Nome 3</h3>
+          <p>RM: 00000</p>
+          <div class="links-sociais">
+            <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 4 (Esquerda Inferior) -->
+      <div class="no-integrante pos-4">
+        <div class="bolinha-foto">
+          <img src="https://via.placeholder.com/130" alt="Integrante 4">
+        </div>
+        <div class="info-card">
+          <h3>Nome 4</h3>
+          <p>RM: 00000</p>
+          <div class="links-sociais">
+            <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrante 5 (Esquerda Superior) -->
+      <div class="no-integrante pos-5">
+        <div class="bolinha-foto">
+          <img src="https://via.placeholder.com/130" alt="Integrante 5">
+        </div>
+        <div class="info-card">
+          <h3>Nome 5</h3>
+          <p>RM: 00000</p>
+          <div class="links-sociais">
+            <a href="https://github.com/seu-usuario" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/seu-usuario" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="JS/auth.js"></script>
+</body>
+</html>
