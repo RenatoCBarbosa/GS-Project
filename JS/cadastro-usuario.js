@@ -53,6 +53,5 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     alert('✅ Perfil salvo com sucesso!');
     // Aqui futuramente você pode salvar os dados no localStorage
-    // Exemplo: localStorage.setItem('feiracircular_usuario', JSON.stringify(dadosDoFormulario));
   });
 });
