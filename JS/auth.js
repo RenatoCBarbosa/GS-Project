@@ -1,3 +1,6 @@
+/* =========================================================
+   1. FUNÇÃO DO MENU DINÂMICO
+   ========================================================= */
 function montarMenu(paginaAtiva) {
   const menu = document.getElementById('menu-dinamico');
   if (!menu) return; // Se não achar o menu, ele não faz nada e evita erros
@@ -29,4 +32,21 @@ function montarMenu(paginaAtiva) {
   }
 
   menu.innerHTML = html;
+}
+
+
+/* =========================================================
+   2. REGISTRO DO PWA (PROGRESSIVE WEB APP)
+   ========================================================= */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Tenta registrar o service-worker.js que deve estar na raiz do projeto
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(registration => {
+        console.log('✅ PWA ativado com sucesso! Escopo:', registration.scope);
+      })
+      .catch(err => {
+        console.log('❌ Erro ao ativar PWA:', err);
+      });
+  });
 }

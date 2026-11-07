@@ -136,3 +136,103 @@ body.tela-selecao {
 
 .btn--primary { background: var(--verde); color: #fff; }
 .card-perfil:hover .btn--primary { background: #1b5e20; } /* Botão escurece no hover */
+
+@media (max-width: 768px) {
+  
+  /* 1. Cabeçalho e Menu (Empilha a logo e os botões) */
+  .header__inner {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    gap: 15px;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav__btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  /* 2. Página (Tira os paddings gigantes) */
+  .main {
+    padding: 20px 0 40px;
+  }
+
+  .page-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .page-header p {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  /* 3. Cards (Ficam um embaixo do outro) */
+  .grid-ofertas,
+  .grid-resumo,
+  .acoes-rapidas {
+    grid-template-columns: 1fr; /* Uma coluna só */
+    gap: 15px;
+  }
+
+  /* 4. Formulário de Cadastro (Inputs viram bloco) */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  /* 5. Filtros (Busca e Select) */
+  .filtros {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .filtros input,
+  .filtros select {
+    width: 100%;
+  }
+
+  /* 6. Tabela do Painel (Permite rolar para o lado se ficar grande) */
+  .tabela-container {
+    padding: 15px;
+    overflow-x: auto;
+  }
+
+  .tabela {
+    min-width: 500px; /* Força a tabela a manter o formato e cria o scroll lateral */
+  }
+
+  /* 7. Ajustes do Início */
+  .welcome-section {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-acao {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .icone {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  /* 8. Tela de Seleção (index.html) */
+  .grid-perfis {
+    grid-template-columns: 1fr;
+  }
+}
