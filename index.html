@@ -3,129 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FeiraCircular — Menos desperdício, mais renda</title>
+  <title>Bem-vindo — FeiraCircular</title>
   <link rel="stylesheet" href="CSS/style.css" />
 </head>
-<body>
+<body class="tela-selecao">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header__inner">
-      <a href="#" class="logo">🌱 Feira<span>Circular</span></a>
-      <nav class="nav">
-        <button class="nav__btn active" data-tab="ofertas">Ofertas</button>
-        <button class="nav__btn" data-tab="cadastrar">Cadastrar Excedente</button>
-        <button class="nav__btn" data-tab="painel">Painel do Feirante</button>
-      </nav>
+  <div class="container">
+    
+    <!-- Logo Centralizada -->
+    <div class="logo-container">
+      <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-grande">
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1>Menos desperdício, mais renda e mais alimentos aproveitados.</h1>
-      <p>Conectamos feirantes, consumidores e organizações sociais para transformar excedentes em oportunidade.</p>
+    <div class="page-header">
+      <h1>Quem é você na feira?</h1>
+      <p>Escolha o seu perfil para acessar as ferramentas certas.</p>
     </div>
-  </section>
 
-  <main class="container main">
-
-    <!-- ABA OFERTAS -->
-    <section id="tab-ofertas" class="tab-panel active">
-      <h2>Ofertas disponíveis</h2>
-
-      <div class="filtros">
-        <input type="text" id="filtro-busca" placeholder="Buscar alimento..." />
-        <select id="filtro-tipo">
-          <option value="todos">Todos</option>
-          <option value="venda">Venda com desconto</option>
-          <option value="doacao">Doação</option>
-        </select>
+    <!-- Cartões de Perfil -->
+    <div class="grid-perfis">
+      
+      <!-- Cartão Feirante -->
+      <div class="card-perfil" onclick="selecionarPerfil('feirante')">
+        <div class="icone">🚜</div>
+        <h2>Feirante</h2>
+        <p>Quero anunciar meus excedentes, vender com desconto e acompanhar meu painel de perdas.</p>
+        <button class="btn btn--primary">Entrar como Feirante</button>
       </div>
 
-      <div id="lista-ofertas" class="grid-ofertas"></div>
-      <p id="msg-vazio" class="msg-vazio">Nenhuma oferta cadastrada ainda.</p>
-    </section>
-
-    <!-- ABA CADASTRAR -->
-    <section id="tab-cadastrar" class="tab-panel">
-      <h2>Cadastrar alimento excedente</h2>
-
-      <form id="form-cadastro" class="form">
-        <div class="form__row">
-          <label>Feirante / Barraca
-            <input type="text" name="barraca" required placeholder="Ex.: Barraca do Zé" />
-          </label>
-          <label>Feira / Localização
-            <input type="text" name="local" required placeholder="Ex.: Feira da Vila Mariana" />
-          </label>
-        </div>
-
-        <div class="form__row">
-          <label>Alimento
-            <input type="text" name="alimento" required placeholder="Ex.: Tomate" />
-          </label>
-          <label>Quantidade (kg)
-            <input type="number" name="quantidade" min="1" step="0.5" required />
-          </label>
-        </div>
-
-        <div class="form__row">
-          <label>Preço original (R$/kg)
-            <input type="number" name="precoOriginal" min="0" step="0.01" required />
-          </label>
-          <label>Preço com desconto (R$/kg)
-            <input type="number" name="precoDesconto" min="0" step="0.01" />
-          </label>
-        </div>
-
-        <div class="form__row">
-          <label>Disponível para
-            <select name="tipo" required>
-              <option value="venda">Venda com desconto</option>
-              <option value="doacao">Doação</option>
-              <option value="ambos">Ambos</option>
-            </select>
-          </label>
-          <label>Horário limite de retirada
-            <input type="time" name="horario" required />
-          </label>
-        </div>
-
-        <button type="submit" class="btn btn--primary">Cadastrar excedente</button>
-      </form>
-    </section>
-
-    <!-- ABA PAINEL -->
-    <section id="tab-painel" class="tab-panel">
-      <h2>Painel do Feirante</h2>
-      <div class="painel-grid">
-        <div class="card-stat"><span id="stat-cadastrados">0</span><small>Itens cadastrados</small></div>
-        <div class="card-stat"><span id="stat-vendidos">0</span><small>Reservas de venda</small></div>
-        <div class="card-stat"><span id="stat-doados">0</span><small>Doações</small></div>
-        <div class="card-stat"><span id="stat-receita">R$ 0,00</span><small>Receita recuperada</small></div>
+      <!-- Cartão Consumidor -->
+      <div class="card-perfil" onclick="selecionarPerfil('cliente')">
+        <div class="icone">🛒</div>
+        <h2>Consumidor</h2>
+        <p>Quero encontrar alimentos frescos e bons com preços acessíveis perto de mim.</p>
+        <button class="btn btn--primary">Entrar como Consumidor</button>
       </div>
 
-      <h3>Histórico de operações</h3>
-      <table class="tabela">
-        <thead>
-          <tr><th>Data</th><th>Alimento</th><th>Operação</th><th>Qtd</th><th>Valor</th></tr>
-        </thead>
-        <tbody id="tabela-historico"></tbody>
-      </table>
-    </section>
+      <!-- Cartão ONG -->
+      <div class="card-perfil" onclick="selecionarPerfil('ong')">
+        <div class="icone">🤝</div>
+        <h2>Organização Social</h2>
+        <p>Represento uma ONG e quero solicitar doações de alimentos para ajudar a comunidade.</p>
+        <button class="btn btn--primary">Entrar como ONG</button>
+      </div>
 
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>FeiraCircular — Projeto Global Solution 2026/2 · CitizenTech</p>
     </div>
-  </footer>
 
-  <!-- Toast -->
-  <div id="toast" class="toast"></div>
+  </div>
 
-  <script src="js/script.js"></script>
+  <script src="JS/script.js"></script>
 </body>
 </html>

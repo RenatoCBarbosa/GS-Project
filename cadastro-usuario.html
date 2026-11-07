@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/cadastro-usuario.css" />
+</head>
+<body>
+
+  <!-- HEADER DINÂMICO (O JS vai injetar os botões certos aqui dentro) -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img">
+      </a>
+      <nav class="nav" id="menu-dinamico">
+        <!-- O JS vai preencher os links baseados no tipo de usuário -->
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <div class="page-header">
+      <h1>Meu Perfil</h1>
+      <p id="subtitulo-perfil">Complete seus dados para continuar.</p>
+    </div>
+
+    <div class="form-container">
+      <form id="form-usuario">
+        
+        <!-- Dados Básicos (Todos preenchem) -->
+        <div class="form-section">
+          <h2>Dados Pessoais</h2>
+          <div class="form-row">
+            <label>
+              Nome Completo
+              <input type="text" name="nome" required placeholder="Seu nome" />
+            </label>
+            <label>
+              E-mail
+              <input type="email" name="email" required placeholder="seu@email.com" />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Telefone / WhatsApp
+              <input type="tel" name="telefone" required placeholder="(11) 99999-9999" />
+            </label>
+            <label>
+              Senha de Acesso
+              <input type="password" name="senha" required placeholder="••••••••" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Campos Exclusivos do FEIRANTE (Escondidos por padrão) -->
+        <div class="form-section" id="secao-feirante" style="display: none;">
+          <h2>Dados da Barraca</h2>
+          <div class="form-row">
+            <label>
+              Nome da Barraca
+              <input type="text" name="nomeBarraca" placeholder="Ex.: Barraca do Zé" />
+            </label>
+            <label>
+              Feira onde trabalha
+              <input type="text" name="localFeira" placeholder="Ex.: Feira da Vila Mariana" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Campos Exclusivos da ONG (Escondidos por padrão) -->
+        <div class="form-section" id="secao-ong" style="display: none;">
+          <h2>Dados da Organização</h2>
+          <div class="form-row">
+            <label>
+              CNPJ
+              <input type="text" name="cnpj" placeholder="00.000.000/0000-00" />
+            </label>
+            <label>
+              Área de Atuação
+              <input type="text" name="atuacao" placeholder="Ex.: Combate à fome" />
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Salvar Perfil</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="JS/cadastro-usuario.js"></script>
+</body>
+</html>
