@@ -1,4 +1,4 @@
-const CACHE_NAME = 'feiracircular-v1';
+const CACHE_NAME = 'feiracircular-v4';
 const urlsToCache = [
   './index.html',
   './inicio.html',
@@ -6,14 +6,14 @@ const urlsToCache = [
   './cadastro.html',
   './doacoes.html',
   './painel.html',
-  './CSS/index.css',
+  './CSS/style.css',
   './CSS/inicio.css',
   './CSS/ofertas.css',
   './CSS/cadastro.css',
   './CSS/doacoes.css',
   './CSS/painel.css',
   './JS/auth.js',
-  './JS/index.js',
+  './JS/script.js',
   './JS/inicio.js',
   './JS/ofertas.js',
   './JS/cadastro.js',
