@@ -1,0 +1,261 @@
+/* =========================================
+   VARIÁVEIS E RESET (Autossuficiente)
+   ========================================= */
+:root {
+  --verde: #2e7d32;
+  --verde-claro: #66bb6a;
+  --creme: #f4f8f0;
+  --escuro: #1b2e1c;
+  --texto: #333;
+  --cinza: #e0e0e0;
+  --sombra: 0 4px 12px rgba(0,0,0,.08);
+}
+
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--creme);
+  color: var(--texto);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container { 
+  width: min(1100px, 92%); 
+  margin-inline: auto; 
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.header { 
+  background: var(--verde); 
+  color: #fff; 
+  position: sticky; 
+  top: 0; 
+  z-index: 10; 
+  box-shadow: 0 2px 10px rgba(0,0,0,.15); 
+}
+
+.header__inner { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 16px 0; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+}
+
+.logo { 
+  color: #fff; 
+  text-decoration: none; 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  letter-spacing: -0.5px;
+}
+.logo span { color: #ffd54f; }
+
+.nav { 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap; 
+}
+
+.nav__btn { 
+  background: transparent; 
+  border: 1px solid rgba(255,255,255,.3); 
+  color: #fff; 
+  padding: 8px 16px; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-size: .9rem; 
+  text-decoration: none; 
+  transition: all .2s ease; 
+}
+
+.nav__btn:hover, 
+.nav__btn.active { 
+  background: #fff; 
+  color: var(--verde); 
+  border-color: #fff; 
+  font-weight: 600;
+}
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+   ========================================= */
+.main { 
+  padding: 40px 0 60px; 
+}
+
+.page-header { 
+  margin-bottom: 30px; 
+  text-align: center; 
+}
+.page-header h1 { 
+  color: var(--escuro); 
+  font-size: 2rem;
+  margin-bottom: 8px; 
+}
+.page-header p { 
+  color: #666; 
+  max-width: 600px; 
+  margin: 0 auto; 
+}
+
+/* =========================================
+   FILTROS
+   ========================================= */
+.filtros { 
+  display: flex; 
+  gap: 12px; 
+  margin-bottom: 30px; 
+  flex-wrap: wrap; 
+  background: #fff; 
+  padding: 16px; 
+  border-radius: 12px; 
+  box-shadow: var(--sombra); 
+}
+
+.filtros input, 
+.filtros select { 
+  padding: 12px 16px; 
+  border: 1px solid var(--cinza); 
+  border-radius: 8px; 
+  font-size: .95rem; 
+  outline: none; 
+  transition: border .2s;
+}
+
+.filtros input { flex: 2; min-width: 200px; }
+.filtros select { flex: 1; min-width: 150px; cursor: pointer; }
+
+.filtros input:focus, 
+.filtros select:focus { 
+  border-color: var(--verde-claro); 
+}
+
+/* =========================================
+   CARDS DE OFERTA
+   ========================================= */
+.grid-ofertas { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 20px; 
+}
+
+.card-oferta { 
+  background: #fff; 
+  border-radius: 12px; 
+  box-shadow: var(--sombra); 
+  padding: 20px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  border-left: 5px solid var(--verde); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.card-oferta:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.card-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.tag { 
+  background: #e8f5e9; 
+  color: var(--verde); 
+  font-size: .75rem; 
+  font-weight: 800; 
+  padding: 4px 10px; 
+  border-radius: 20px; 
+  text-transform: uppercase;
+}
+
+.estoque { 
+  font-size: .8rem; 
+  color: #e65100; 
+  font-weight: 600; 
+}
+
+.card-oferta h3 { 
+  color: var(--escuro); 
+  font-size: 1.3rem; 
+}
+
+.card-oferta small { 
+  color: #666; 
+  font-size: .85rem; 
+}
+
+.preco { 
+  display: flex; 
+  gap: 10px; 
+  align-items: baseline; 
+  margin-top: 4px;
+}
+
+.preco .riscado { 
+  text-decoration: line-through; 
+  color: #999; 
+  font-size: .95rem; 
+}
+
+.preco .novo { 
+  color: var(--verde); 
+  font-weight: 700; 
+  font-size: 1.5rem; 
+}
+
+.preco .novo small { 
+  font-size: 0.9rem; 
+  font-weight: 400; 
+  color: #666; 
+}
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+.btn { 
+  border: none; 
+  padding: 14px 22px; 
+  border-radius: 8px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: background .2s; 
+  width: 100%; 
+  margin-top: auto; /* Empurra o botão pro final do card */
+}
+
+.btn--primary { 
+  background: var(--verde); 
+  color: #fff; 
+}
+
+.btn--primary:hover { 
+  background: #256428; 
+}
+
+/* =========================================
+   MENSAGEM VAZIA
+   ========================================= */
+.msg-vazio { 
+  text-align: center; 
+  padding: 50px 20px; 
+  color: #888; 
+  background: #fff; 
+  border-radius: 12px; 
+  box-shadow: var(--sombra); 
+}
+.msg-vazio h3 { margin-bottom: 8px; color: var(--escuro); }

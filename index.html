@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bem-vindo — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+<body class="tela-selecao">
+
+  <div class="container">
+    
+    <!-- Logo Centralizada -->
+    <div class="logo-container">
+      <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-grande">
+    </div>
+
+    <div class="page-header">
+      <h1>Quem é você na feira?</h1>
+      <p>Escolha o seu perfil para acessar as ferramentas certas.</p>
+    </div>
+
+    <!-- Cartões de Perfil -->
+    <div class="grid-perfis">
+      
+      <!-- Cartão Feirante -->
+      <div class="card-perfil" onclick="selecionarPerfil('feirante')">
+        <div class="icone">🚜</div>
+        <h2>Feirante</h2>
+        <p>Quero anunciar meus excedentes, vender com desconto e acompanhar meu painel de perdas.</p>
+        <button class="btn btn--primary">Entrar como Feirante</button>
+      </div>
+
+      <!-- Cartão Consumidor -->
+      <div class="card-perfil" onclick="selecionarPerfil('cliente')">
+        <div class="icone">🛒</div>
+        <h2>Consumidor</h2>
+        <p>Quero encontrar alimentos frescos e bons com preços acessíveis perto de mim.</p>
+        <button class="btn btn--primary">Entrar como Consumidor</button>
+      </div>
+
+      <!-- Cartão ONG -->
+      <div class="card-perfil" onclick="selecionarPerfil('ong')">
+        <div class="icone">🤝</div>
+        <h2>Organização Social</h2>
+        <p>Represento uma ONG e quero solicitar doações de alimentos para ajudar a comunidade.</p>
+        <button class="btn btn--primary">Entrar como ONG</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
