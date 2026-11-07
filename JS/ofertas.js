@@ -5,20 +5,20 @@ function formatarMoeda(valor) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  montarMenu('ofertas');
+  const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
+
   const dadosSalvos = localStorage.getItem('feiracircular_ofertas');
   todasAsOfertas = dadosSalvos ? JSON.parse(dadosSalvos) : [];
 
-  // Semente de dados para a apresentação
   if (todasAsOfertas.length === 0) {
     todasAsOfertas = [
       { id: 1, barraca: "Barraca do Zé", local: "Feira da Vila Mariana", alimento: "Tomate Italiano", quantidade: 12, precoOriginal: 8.50, precoDesconto: 4.00, tipo: "venda" },
-      { id: 2, barraca: "Horta da Maria", local: "Feira do Ipiranga", alimento: "Banana Prata", quantidade: 15, precoOriginal: 6.00, precoDesconto: 3.00, tipo: "venda" },
-      { id: 3, barraca: "Verduras SP", local: "Feira da Lapa", alimento: "Alface Crespa", quantidade: 8, precoOriginal: 4.00, precoDesconto: 2.00, tipo: "venda" }
+      { id: 2, barraca: "Horta da Maria", local: "Feira do Ipiranga", alimento: "Banana Prata", quantidade: 15, precoOriginal: 6.00, precoDesconto: 3.00, tipo: "venda" }
     ];
     localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
   }
 
-  // Preenche o select de feiras
   const selectFeira = document.getElementById('filtro-feira');
   const feirasUnicas = [...new Set(todasAsOfertas.map(o => o.local))];
   feirasUnicas.forEach(feira => {
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderizarOfertas();
-
   document.getElementById('filtro-busca').addEventListener('input', renderizarOfertas);
   document.getElementById('filtro-feira').addEventListener('change', renderizarOfertas);
 });
@@ -39,6 +38,7 @@ function renderizarOfertas() {
   const msgVazio = document.getElementById('msg-vazio');
   const termoBusca = document.getElementById('filtro-busca').value.toLowerCase();
   const feiraSelecionada = document.getElementById('filtro-feira').value;
+  const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
 
   const ofertasFiltradas = todasAsOfertas.filter(oferta => {
     const ehVenda = oferta.tipo === 'venda' || oferta.tipo === 'ambos';
@@ -59,9 +59,19 @@ function renderizarOfertas() {
 
   ofertasFiltradas.forEach(oferta => {
     const desconto = Math.round(((oferta.precoOriginal - oferta.precoDesconto) / oferta.precoOriginal) * 100);
-
     const card = document.createElement('div');
     card.className = 'card-oferta';
+    
+    // Lógica de botões por perfil
+    let botaoHTML = '';
+    if (perfil === 'feirante') {
+      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Seu anúncio ativo</button>`;
+    } else if (perfil === 'ong') {
+      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Exclusivo p/ Consumidor</button>`;
+    } else {
+      botaoHTML = `<button class="btn btn--primary" onclick="fazerReserva(${oferta.id})">Reservar Agora</button>`;
+    }
+
     card.innerHTML = `
       <div class="card-header">
         <span class="tag">${desconto}% OFF</span>
@@ -73,7 +83,7 @@ function renderizarOfertas() {
         <span class="riscado">${formatarMoeda(oferta.precoOriginal)}</span>
         <span class="novo">${formatarMoeda(oferta.precoDesconto)} <small>/kg</small></span>
       </div>
-      <button class="btn btn--primary" onclick="fazerReserva(${oferta.id})">Reservar Agora</button>
+      ${botaoHTML}
     `;
     container.appendChild(card);
   });
@@ -111,6 +121,5 @@ function fazerReserva(idOferta) {
   localStorage.setItem('feiracircular_historico', JSON.stringify(historico));
 
   alert(`✅ Sucesso!\nVocê reservou ${quantidadeReservada} kg de ${oferta.alimento}.\nTotal: ${formatarMoeda(quantidadeReservada * oferta.precoDesconto)}.`);
-  
   renderizarOfertas(); 
 }

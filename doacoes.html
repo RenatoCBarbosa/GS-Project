@@ -7,53 +7,31 @@
   <link rel="stylesheet" href="CSS/doacoes.css" />
 </head>
 <body>
-
-  <!-- HEADER PADRÃO COM A LOGO -->
   <header class="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo">
-        <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
-      </a>
-      
-      <nav class="nav">
-        <a href="inicio.html" class="nav__btn">Início</a>
-        <a href="ofertas.html" class="nav__btn">Ofertas</a>
-        <a href="cadastro.html" class="nav__btn">Cadastro</a>
-        <a href="doacoes.html" class="nav__btn active">Doações</a>
-        <a href="painel.html" class="nav__btn">Painel</a>
-      </nav>
+      <a href="inicio.html" class="logo"><img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img"></a>
+      <nav class="nav" id="menu-dinamico"></nav>
     </div>
   </header>
 
-  <!-- CONTEÚDO -->
   <main class="container main">
-    
     <div class="page-header">
       <h1>Mural de Doações</h1>
       <p>Espaço exclusivo para Organizações Sociais. Encontre alimentos próprios para consumo e solicite a retirada.</p>
     </div>
 
-    <!-- FILTROS -->
     <section class="filtros">
       <input type="text" id="filtro-busca" placeholder="🔍 Buscar alimento ou barraca..." />
-      <select id="filtro-feira">
-        <option value="todas">Todas as feiras</option>
-      </select>
+      <select id="filtro-feira"><option value="todas">Todas as feiras</option></select>
     </section>
 
-    <!-- LISTA DE DOAÇÕES -->
-    <section class="grid-ofertas" id="lista-doacoes">
-      <!-- Cards injetados via JS -->
-    </section>
-
-    <!-- MENSAGEM DE VAZIO -->
+    <section class="grid-ofertas" id="lista-doacoes"></section>
     <div id="msg-vazio" class="msg-vazio" style="display: none;">
       <h3>Nenhuma doação disponível agora 😕</h3>
-      <p>Os feirantes ainda não cadastraram alimentos para doação hoje. Volte mais tarde!</p>
     </div>
-
   </main>
 
+  <script src="JS/auth.js"></script>
   <script src="JS/doacoes.js"></script>
 </body>
 </html>

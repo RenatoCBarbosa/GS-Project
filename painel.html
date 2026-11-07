@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Painel — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/painel.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img">
+      </a>
+      <nav class="nav" id="menu-dinamico"></nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <div class="page-header">
+      <h1>Meu Painel de Resultados</h1>
+      <p>Acompanhe suas vendas, doações e o quanto você deixou de desperdiçar.</p>
+    </div>
+
+    <div class="grid-resumo">
+      <div class="card-resumo verde">
+        <h3>Receita Recuperada</h3>
+        <span id="res-receita">R$ 0,00</span>
+        <small>Com vendas de excedentes</small>
+      </div>
+      <div class="card-resumo laranja">
+        <h3>Doações Realizadas</h3>
+        <span id="res-doacoes">0 kg</span>
+        <small>Destinados a ONGs</small>
+      </div>
+      <div class="card-resumo cinza">
+        <h3>Alimentos Descartados</h3>
+        <span id="res-descarte">0 kg</span>
+        <small>Que viraram prejuízo</small>
+      </div>
+    </div>
+
+    <div class="tabela-container">
+      <h2>Histórico de Operações</h2>
+      <table class="tabela">
+        <thead>
+          <tr><th>Data</th><th>Alimento</th><th>Operação</th><th>Quantidade</th><th>Retorno</th></tr>
+        </thead>
+        <tbody id="corpo-tabela"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- IMPORTANTE: Chamar o auth.js ANTES do painel.js -->
+    <script src="JS/auth.js"></script>
+  <script src="JS/painel.js"></script>
+</body>
+</html>

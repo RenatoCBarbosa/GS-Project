@@ -1,15 +1,14 @@
 let todasAsOfertas = [];
 
-function formatarMoeda(valor) {
-  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Puxa os dados salvos
+  montarMenu('doacoes');
+  
+  // Proteção: só ONG acessa essa página (ou cliente/feirante visualiza mas não interage)
+  const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
+
   const dadosSalvos = localStorage.getItem('feiracircular_ofertas');
   todasAsOfertas = dadosSalvos ? JSON.parse(dadosSalvos) : [];
 
-  // Preenche o select de feiras
   const selectFeira = document.getElementById('filtro-feira');
   const feirasUnicas = [...new Set(todasAsOfertas.map(o => o.local))];
   feirasUnicas.forEach(feira => {
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderizarDoacoes();
-
   document.getElementById('filtro-busca').addEventListener('input', renderizarDoacoes);
   document.getElementById('filtro-feira').addEventListener('change', renderizarDoacoes);
 });
@@ -30,14 +28,13 @@ function renderizarDoacoes() {
   const msgVazio = document.getElementById('msg-vazio');
   const termoBusca = document.getElementById('filtro-busca').value.toLowerCase();
   const feiraSelecionada = document.getElementById('filtro-feira').value;
+  const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
 
-  // FILTRO CRÍTICO: Só entra aqui se o tipo for 'doacao' ou 'ambos'
   const doacoesFiltradas = todasAsOfertas.filter(oferta => {
     const ehDoacao = oferta.tipo === 'doacao' || oferta.tipo === 'ambos';
     const bateBusca = oferta.alimento.toLowerCase().includes(termoBusca) || oferta.barraca.toLowerCase().includes(termoBusca);
     const bateFeira = feiraSelecionada === 'todas' || oferta.local === feiraSelecionada;
     const temEstoque = oferta.quantidade > 0;
-    
     return ehDoacao && bateBusca && bateFeira && temEstoque;
   });
 
@@ -54,6 +51,14 @@ function renderizarDoacoes() {
     const card = document.createElement('div');
     card.className = 'card-oferta';
     
+    // Lógica de botões
+    let botaoHTML = '';
+    if (perfil === 'ong') {
+      botaoHTML = `<button class="btn btn--doar" onclick="solicitarDoacao(${oferta.id})">Solicitar Doação</button>`;
+    } else {
+      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Apenas ONGs podem solicitar</button>`;
+    }
+
     card.innerHTML = `
       <div class="card-header">
         <span class="tag">Doação</span>
@@ -61,17 +66,13 @@ function renderizarDoacoes() {
       </div>
       <h3>${oferta.alimento}</h3>
       <small>📍 ${oferta.barraca} - ${oferta.local}</small>
-      <div class="preco">
-        <span class="novo">Gratuito</span>
-      </div>
-      <button class="btn btn--doar" onclick="solicitarDoacao(${oferta.id})">Solicitar Doação</button>
+      <div class="preco"><span class="novo">Gratuito</span></div>
+      ${botaoHTML}
     `;
-    
     container.appendChild(card);
   });
 }
 
-// Função que roda quando a ONG clica no botão laranja
 function solicitarDoacao(idOferta) {
   const oferta = todasAsOfertas.find(o => o.id === idOferta);
   if (!oferta) return;
@@ -88,11 +89,9 @@ function solicitarDoacao(idOferta) {
     return;
   }
 
-  // Atualiza o estoque
   oferta.quantidade -= quantidadeSolicitada;
   localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
 
-  // Salva no histórico do feirante
   const historicoSalvo = localStorage.getItem('feiracircular_historico');
   let historico = historicoSalvo ? JSON.parse(historicoSalvo) : [];
   
@@ -105,7 +104,6 @@ function solicitarDoacao(idOferta) {
   });
   localStorage.setItem('feiracircular_historico', JSON.stringify(historico));
 
-  alert(`🤝 Doação Confirmada!\nSua organização solicitou ${quantidadeSolicitada} kg de ${oferta.alimento}.\n\nPor favor, retire na ${oferta.barraca} (${oferta.local}) até as ${oferta.horario}.`);
-  
+  alert(`🤝 Doação Confirmada!\nSua organização solicitou ${quantidadeSolicitada} kg de ${oferta.alimento}.`);
   renderizarDoacoes(); 
 }
