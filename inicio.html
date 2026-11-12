@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Início — FeiraCircular</title>
   <link rel="stylesheet" href="CSS/inicio.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <header class="header">
     <div class="container header__inner">
       <a href="inicio.html" class="logo"><img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img"></a>
+      <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+        <span aria-hidden="true">☰</span>
+      </button>
       <nav class="nav" id="menu-dinamico"></nav>
     </div>
   </header>

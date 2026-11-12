@@ -12,17 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
     corpoTabela.innerHTML = '';
 
     if (historico.length === 0) {
-      corpoTabela.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#888;">Nenhuma movimentação registrada ainda.</td></tr>`;
+      const linha = document.createElement('tr');
+      const celula = document.createElement('td');
+      celula.colSpan = 5;
+      celula.textContent = 'Nenhuma movimentação registrada ainda.';
+      linha.appendChild(celula);
+      corpoTabela.appendChild(linha);
     } else {
       historico.forEach(item => {
         const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${item.data}</td>
-          <td><strong>${item.alimento}</strong></td>
-          <td>${item.operacao}</td>
-          <td>${item.qtd}</td>
-          <td>${item.valor}</td>
-        `;
+        [item.data, item.alimento, item.operacao, item.qtd, item.valor].forEach((valor, indice) => {
+          const celula = document.createElement('td');
+          if (indice === 1) {
+            const alimento = document.createElement('strong');
+            alimento.textContent = valor;
+            celula.appendChild(alimento);
+          } else {
+            celula.textContent = valor;
+          }
+          tr.appendChild(celula);
+        });
         corpoTabela.appendChild(tr);
 
         if (item.operacao === 'Venda com desconto') {

@@ -1,0 +1,187 @@
+:root {
+  --verde: #2e7d32;
+  --verde-escuro: #1b2e1c;
+  --creme: #f4f8f0;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #333;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  background: var(--creme) url('../IMG/TresFolhas.png') no-repeat fixed -80px -50px;
+  background-size: 380px;
+  background-blend-mode: multiply;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(46, 125, 50, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.logo-img {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.nav__btn {
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  color: var(--verde-escuro);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav__btn:hover,
+.nav__btn.active {
+  border-color: var(--verde);
+  background: var(--verde);
+  color: #fff;
+}
+
+.main {
+  padding: 40px 0 60px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.page-header h1 {
+  margin-bottom: 8px;
+  color: var(--verde-escuro);
+}
+
+.page-header p {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.localizador-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 24px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--sombra);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--verde);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #256428;
+}
+
+.localizador-status {
+  flex: 1 1 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.grid-feiras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.card-feira {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border-top: 4px solid var(--verde);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: var(--sombra);
+}
+
+.card-feira h2 {
+  margin: 0;
+  color: var(--verde-escuro);
+  font-size: 1.2rem;
+}
+
+.card-feira p {
+  margin: 0;
+}
+
+.distancia {
+  color: var(--verde);
+  font-weight: 700;
+}
+
+.referencia {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 24px 0 40px;
+  }
+
+  .localizador-acoes {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

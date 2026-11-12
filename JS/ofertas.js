@@ -58,50 +58,86 @@ function renderizarOfertas() {
   }
 
   ofertasFiltradas.forEach(oferta => {
-    const desconto = Math.round(((oferta.precoOriginal - oferta.precoDesconto) / oferta.precoOriginal) * 100);
+    const desconto = oferta.precoOriginal > 0
+      ? Math.round(((oferta.precoOriginal - oferta.precoDesconto) / oferta.precoOriginal) * 100)
+      : 0;
     const card = document.createElement('div');
     card.className = 'card-oferta';
-    
-    // Lógica de botões por perfil
-    let botaoHTML = '';
-    if (perfil === 'feirante') {
-      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Seu anúncio ativo</button>`;
-    } else if (perfil === 'ong') {
-      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Exclusivo p/ Consumidor</button>`;
-    } else {
-      botaoHTML = `<button class="btn btn--primary" onclick="fazerReserva(${oferta.id})">Reservar Agora</button>`;
-    }
 
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="tag">${desconto}% OFF</span>
-        <span class="estoque">Restam ${oferta.quantidade} kg</span>
-      </div>
-      <h3>${oferta.alimento}</h3>
-      <small>📍 ${oferta.barraca} - ${oferta.local}</small>
-      <div class="preco">
-        <span class="riscado">${formatarMoeda(oferta.precoOriginal)}</span>
-        <span class="novo">${formatarMoeda(oferta.precoDesconto)} <small>/kg</small></span>
-      </div>
-      ${botaoHTML}
-    `;
+    const cabecalho = document.createElement('div');
+    cabecalho.className = 'card-header';
+    const selo = document.createElement('span');
+    selo.className = 'tag';
+    selo.textContent = `${desconto}% OFF`;
+    const estoque = document.createElement('span');
+    estoque.className = 'estoque';
+    estoque.textContent = `Restam ${oferta.quantidade} kg`;
+    cabecalho.append(selo, estoque);
+
+    const alimento = document.createElement('h3');
+    alimento.textContent = oferta.alimento;
+    const local = document.createElement('small');
+    local.textContent = `${oferta.barraca} - ${oferta.local}`;
+
+    const preco = document.createElement('div');
+    preco.className = 'preco';
+    const precoOriginal = document.createElement('span');
+    precoOriginal.className = 'riscado';
+    precoOriginal.textContent = formatarMoeda(oferta.precoOriginal);
+    const precoDesconto = document.createElement('span');
+    precoDesconto.className = 'novo';
+    precoDesconto.textContent = `${formatarMoeda(oferta.precoDesconto)} /kg`;
+    preco.append(precoOriginal, precoDesconto);
+
+    const formularioReserva = document.createElement('form');
+    formularioReserva.className = 'quantidade-form';
+    const rotuloQuantidade = document.createElement('label');
+    rotuloQuantidade.textContent = 'Quantidade para reservar (kg)';
+    const campoQuantidade = document.createElement('input');
+    campoQuantidade.type = 'number';
+    campoQuantidade.min = '0.1';
+    campoQuantidade.step = '0.1';
+    campoQuantidade.max = String(oferta.quantidade);
+    campoQuantidade.required = true;
+    campoQuantidade.placeholder = 'Ex.: 2';
+    rotuloQuantidade.appendChild(campoQuantidade);
+
+    const botao = document.createElement('button');
+    botao.type = 'submit';
+    botao.className = 'btn';
+    if (perfil === 'feirante') {
+      botao.disabled = true;
+      botao.textContent = 'Seu anúncio ativo';
+      campoQuantidade.disabled = true;
+    } else if (perfil === 'ong') {
+      botao.disabled = true;
+      botao.textContent = 'Exclusivo para consumidores';
+      campoQuantidade.disabled = true;
+    } else {
+      botao.classList.add('btn--primary');
+      botao.textContent = 'Reservar agora';
+    }
+    formularioReserva.addEventListener('submit', evento => {
+      evento.preventDefault();
+      fazerReserva(oferta.id, Number(campoQuantidade.value));
+    });
+    formularioReserva.append(rotuloQuantidade, botao);
+
+    card.append(cabecalho, alimento, local, preco, formularioReserva);
     container.appendChild(card);
   });
 }
 
-function fazerReserva(idOferta) {
+function fazerReserva(idOferta, quantidadeReservada) {
   const oferta = todasAsOfertas.find(o => o.id === idOferta);
   if (!oferta) return;
 
-  const qtdDigitada = prompt(`Quantos kg de ${oferta.alimento} você deseja reservar?\n(Disponível: ${oferta.quantidade} kg)`);
-  const quantidadeReservada = parseFloat(qtdDigitada);
-
-  if (isNaN(quantidadeReservada) || quantidadeReservada <= 0) {
-    alert("Por favor, digite uma quantidade válida.");
+  if (!Number.isFinite(quantidadeReservada) || quantidadeReservada <= 0) {
+    alert("Digite uma quantidade válida.");
     return;
   }
   if (quantidadeReservada > oferta.quantidade) {
-    alert(`Desculpe, só temos ${oferta.quantidade} kg disponíveis.`);
+    alert(`Só temos ${oferta.quantidade} kg disponíveis.`);
     return;
   }
 
@@ -120,6 +156,20 @@ function fazerReserva(idOferta) {
   });
   localStorage.setItem('feiracircular_historico', JSON.stringify(historico));
 
-  alert(`✅ Sucesso!\nVocê reservou ${quantidadeReservada} kg de ${oferta.alimento}.\nTotal: ${formatarMoeda(quantidadeReservada * oferta.precoDesconto)}.`);
+  const reservasSalvas = localStorage.getItem('feiracircular_minhas_reservas');
+  const reservas = reservasSalvas ? JSON.parse(reservasSalvas) : [];
+  reservas.push({
+    tipo: 'reserva',
+    data: new Date().toLocaleString('pt-BR'),
+    alimento: oferta.alimento,
+    barraca: oferta.barraca,
+    local: oferta.local,
+    qtd: quantidadeReservada,
+    valor: quantidadeReservada * oferta.precoDesconto,
+    status: 'Reservada'
+  });
+  localStorage.setItem('feiracircular_minhas_reservas', JSON.stringify(reservas));
+
+  alert(`Sucesso!\nVocê reservou ${quantidadeReservada} kg de ${oferta.alimento}.\nTotal: ${formatarMoeda(quantidadeReservada * oferta.precoDesconto)}.`);
   renderizarOfertas(); 
 }

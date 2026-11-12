@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let precoDesconto = parseFloat(formData.get('precoDesconto')) || 0;
 
     if (tipo !== 'doacao' && precoDesconto >= precoOriginal) {
-      alert('⚠️ O preço com desconto deve ser menor que o preço original.');
+      alert('O preço com desconto deve ser menor que o preço original.');
       return;
     }
     if (tipo === 'doacao') precoDesconto = 0;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     todasAsOfertas.push(novaOferta);
     localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
 
-    alert(`✅ Sucesso!\nO alimento "${novaOferta.alimento}" foi cadastrado.`);
+    alert(`Anúncio publicado.\nO alimento "${novaOferta.alimento}" foi cadastrado.`);
     
     form.reset();
     inputPrecoDesconto.disabled = false;

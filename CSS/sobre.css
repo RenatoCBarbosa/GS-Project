@@ -3,7 +3,7 @@
    ========================================== */
 
 .content-section {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.88);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
@@ -116,50 +116,5 @@
 @media (max-width: 768px) {
   .content-section {
     padding: 20px;
-  }
-}
-
-/* Estilo padrão do botão hambúrguer (escondido no desktop) */
-.menu-hamburguer {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-}
-
-.menu-hamburguer span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #2c3e50;
-  border-radius: 3px;
-  transition: 0.3s;
-}
-
-/* Responsividade para Telas Menores (Mobile) */
-@media (max-width: 768px) {
-  .menu-hamburguer {
-    display: flex; /* Exibe o hambúrguer no celular */
-  }
-
-  .nav {
-    display: none; /* Esconde o menu por padrão no mobile */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    gap: 15px;
-  }
-
-  /* Quando a classe 'ativo' for acionada via JS, o menu aparece */
-  .nav.ativo {
-    display: flex;
   }
 }

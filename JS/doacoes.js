@@ -50,38 +50,69 @@ function renderizarDoacoes() {
   doacoesFiltradas.forEach(oferta => {
     const card = document.createElement('div');
     card.className = 'card-oferta';
-    
-    // Lógica de botões
-    let botaoHTML = '';
-    if (perfil === 'ong') {
-      botaoHTML = `<button class="btn btn--doar" onclick="solicitarDoacao(${oferta.id})">Solicitar Doação</button>`;
-    } else {
-      botaoHTML = `<button class="btn" style="background:#ccc; cursor:not-allowed;" disabled>Apenas ONGs podem solicitar</button>`;
-    }
 
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="tag">Doação</span>
-        <span class="estoque">Disponível: ${oferta.quantidade} kg</span>
-      </div>
-      <h3>${oferta.alimento}</h3>
-      <small>📍 ${oferta.barraca} - ${oferta.local}</small>
-      <div class="preco"><span class="novo">Gratuito</span></div>
-      ${botaoHTML}
-    `;
+    const cabecalho = document.createElement('div');
+    cabecalho.className = 'card-header';
+    const selo = document.createElement('span');
+    selo.className = 'tag';
+    selo.textContent = 'Doação';
+    const estoque = document.createElement('span');
+    estoque.className = 'estoque';
+    estoque.textContent = `Disponível: ${oferta.quantidade} kg`;
+    cabecalho.append(selo, estoque);
+
+    const alimento = document.createElement('h3');
+    alimento.textContent = oferta.alimento;
+    const local = document.createElement('small');
+    local.textContent = `${oferta.barraca} - ${oferta.local}`;
+    const preco = document.createElement('div');
+    preco.className = 'preco';
+    const gratuito = document.createElement('span');
+    gratuito.className = 'novo';
+    gratuito.textContent = 'Gratuito';
+    preco.appendChild(gratuito);
+
+    const formularioDoacao = document.createElement('form');
+    formularioDoacao.className = 'quantidade-form';
+    const rotuloQuantidade = document.createElement('label');
+    rotuloQuantidade.textContent = 'Quantidade para solicitar (kg)';
+    const campoQuantidade = document.createElement('input');
+    campoQuantidade.type = 'number';
+    campoQuantidade.min = '0.1';
+    campoQuantidade.step = '0.1';
+    campoQuantidade.max = String(oferta.quantidade);
+    campoQuantidade.required = true;
+    campoQuantidade.placeholder = 'Ex.: 2';
+    rotuloQuantidade.appendChild(campoQuantidade);
+
+    const botao = document.createElement('button');
+    botao.type = 'submit';
+    botao.className = 'btn';
+    if (perfil === 'ong') {
+      botao.classList.add('btn--doar');
+      botao.textContent = 'Solicitar doação';
+    } else {
+      botao.disabled = true;
+      botao.textContent = 'Apenas ONGs podem solicitar';
+      campoQuantidade.disabled = true;
+    }
+    formularioDoacao.addEventListener('submit', evento => {
+      evento.preventDefault();
+      solicitarDoacao(oferta.id, Number(campoQuantidade.value));
+    });
+    formularioDoacao.append(rotuloQuantidade, botao);
+
+    card.append(cabecalho, alimento, local, preco, formularioDoacao);
     container.appendChild(card);
   });
 }
 
-function solicitarDoacao(idOferta) {
+function solicitarDoacao(idOferta, quantidadeSolicitada) {
   const oferta = todasAsOfertas.find(o => o.id === idOferta);
   if (!oferta) return;
 
-  const qtdDigitada = prompt(`Quantos kg de ${oferta.alimento} a sua organização deseja solicitar?\n(Disponível: ${oferta.quantidade} kg)`);
-  const quantidadeSolicitada = parseFloat(qtdDigitada);
-
-  if (isNaN(quantidadeSolicitada) || quantidadeSolicitada <= 0) {
-    alert("Por favor, digite uma quantidade válida.");
+  if (!Number.isFinite(quantidadeSolicitada) || quantidadeSolicitada <= 0) {
+    alert("Digite uma quantidade válida.");
     return;
   }
   if (quantidadeSolicitada > oferta.quantidade) {
@@ -104,6 +135,20 @@ function solicitarDoacao(idOferta) {
   });
   localStorage.setItem('feiracircular_historico', JSON.stringify(historico));
 
-  alert(`🤝 Doação Confirmada!\nSua organização solicitou ${quantidadeSolicitada} kg de ${oferta.alimento}.`);
+  const reservasSalvas = localStorage.getItem('feiracircular_minhas_reservas');
+  const reservas = reservasSalvas ? JSON.parse(reservasSalvas) : [];
+  reservas.push({
+    tipo: 'doacao',
+    data: new Date().toLocaleString('pt-BR'),
+    alimento: oferta.alimento,
+    barraca: oferta.barraca,
+    local: oferta.local,
+    qtd: quantidadeSolicitada,
+    valor: 0,
+    status: 'Solicitada'
+  });
+  localStorage.setItem('feiracircular_minhas_reservas', JSON.stringify(reservas));
+
+  alert(`Solicitação confirmada!\nSua organização solicitou ${quantidadeSolicitada} kg de ${oferta.alimento}.`);
   renderizarDoacoes(); 
 }

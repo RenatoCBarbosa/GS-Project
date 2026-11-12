@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2e7d32" />
+  <title>Meu painel — FeiraCircular</title>
+  <link rel="stylesheet" href="CSS/painel-usuario.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="inicio.html" class="logo">
+        <img src="IMG/LogoSemFundo.png" alt="FeiraCircular — início" class="logo-img">
+      </a>
+      <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <nav class="nav" id="menu-dinamico" aria-label="Navegação principal"></nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <header class="page-header">
+      <h1 id="titulo-painel">Meu histórico</h1>
+      <p id="descricao-painel">Acompanhe suas reservas de alimentos.</p>
+    </header>
+
+    <section class="grid-resumo" id="resumo-painel" aria-label="Resumo da atividade"></section>
+
+    <section class="tabela-container">
+      <h2 id="titulo-historico">Minhas reservas</h2>
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Alimento</th>
+            <th>Feira e barraca</th>
+            <th>Quantidade</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-historico"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="JS/auth.js"></script>
+  <script src="JS/painel-usuario.js"></script>
+</body>
+</html>

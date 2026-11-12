@@ -14,12 +14,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  const btnMenu = document.getElementById("btn-menu");
-  const navMenu = document.getElementById("menu-dinamico");
-
-  if (btnMenu && navMenu) {
-    btnMenu.addEventListener("click", () => {
-      navMenu.classList.toggle("ativo");
-    });
-  }
 });

@@ -253,6 +253,45 @@ body {
   background: #256428;
 }
 
+.quantidade-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.quantidade-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--cor-escuro);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.quantidade-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cor-cinza);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.quantidade-form input:focus {
+  border-color: var(--cor-verde-claro);
+  outline: 2px solid rgba(102, 187, 106, 0.2);
+}
+
+.quantidade-form .btn {
+  margin-top: 0;
+}
+
+.btn:disabled {
+  background: #d7d7d7;
+  color: #555;
+  cursor: not-allowed;
+}
+
 .msg-vazio {
   text-align: center;
   padding: 50px 20px;

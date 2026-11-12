@@ -102,7 +102,9 @@ body {
 .card-acao.destaque { border-left-color: var(--verde); }
 
 .icone {
-  font-size: 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: .04em;
   background: var(--creme);
   width: 70px;
   height: 70px;

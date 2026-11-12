@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('acoes-rapidas').innerHTML = `
       <a href="cadastro.html" class="card-acao destaque">
-        <div class="icone">➕</div>
+        <div class="icone" aria-hidden="true">AN</div>
         <div class="texto"><h2>Anunciar Excedente</h2><p>Cadastre o que sobrou para vender ou doar.</p></div>
       </a>
       <a href="painel.html" class="card-acao">
-        <div class="icone">📊</div>
+        <div class="icone" aria-hidden="true">PA</div>
         <div class="texto"><h2>Meu Painel de Resultados</h2><p>Veja sua receita e impacto do dia.</p></div>
       </a>
     `;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     subtitulo.textContent = "Encontre alimentos disponíveis para doação na sua região.";
     document.getElementById('acoes-rapidas').innerHTML = `
       <a href="doacoes.html" class="card-acao destaque" style="border-left-color: #ef6c00;">
-        <div class="icone">🤝</div>
+        <div class="icone" aria-hidden="true">ONG</div>
         <div class="texto"><h2>Buscar Doações</h2><p>Veja alimentos disponíveis e solicite a retirada.</p></div>
       </a>
     `;
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     subtitulo.textContent = "Encontre alimentos frescos e com desconto perto de você.";
     document.getElementById('acoes-rapidas').innerHTML = `
       <a href="ofertas.html" class="card-acao destaque">
-        <div class="icone">🛒</div>
+        <div class="icone" aria-hidden="true">OF</div>
         <div class="texto"><h2>Ver Ofertas com Desconto</h2><p>Encontre alimentos frescos com preço reduzido.</p></div>
       </a>
     `;

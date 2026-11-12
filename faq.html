@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="CSS/inicio.css" />
   <link rel="stylesheet" href="CSS/cadastro.css" />
   <link rel="stylesheet" href="CSS/faq.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
 </head>
 <body>
 
@@ -16,6 +17,9 @@
       <a href="inicio.html" class="logo">
         <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
       </a>
+      <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+        <span aria-hidden="true">☰</span>
+      </button>
       <nav class="nav" id="menu-dinamico">
         <!-- O JS preenche os links -->
       </nav>
@@ -31,7 +35,7 @@
 
    <!-- NOVA BARRA DE PESQUISA -->
     <div class="faq-search-container">
-      <input type="text" id="faq-search" placeholder="🔍 Pesquise por uma dúvida (ex: feirante, taxa, cadastro)..." />
+      <input type="text" id="faq-search" placeholder="Pesquise por uma dúvida (ex.: feirante, taxa, cadastro)..." />
     </div>
 
     <div class="faq-container" id="faq-lista">

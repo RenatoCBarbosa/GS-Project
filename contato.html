@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="CSS/inicio.css" />
   <link rel="stylesheet" href="CSS/cadastro.css" />
   <link rel="stylesheet" href="CSS/contato.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
 </head>
 <body>
 
@@ -16,6 +17,9 @@
       <a href="inicio.html" class="logo">
         <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
       </a>
+      <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+        <span aria-hidden="true">☰</span>
+      </button>
       <nav class="nav" id="menu-dinamico">
         <!-- O JS preenche os links -->
       </nav>
@@ -72,7 +76,7 @@
 
       <!-- Feedback de Sucesso -->
       <div id="msg-sucesso" class="msg-sucesso" style="display: none;">
-        <h3>Mensagem enviada com sucesso! 🎉</h3>
+        <h3>Mensagem enviada com sucesso!</h3>
         <p>Agradecemos o contato. Retornaremos em breve.</p>
       </div>
     </div>

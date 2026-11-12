@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ofertas — FeiraCircular</title>
   <link rel="stylesheet" href="CSS/ofertas.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <header class="header">
     <div class="container header__inner">
       <a href="inicio.html" class="logo"><img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img"></a>
+      <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+        <span aria-hidden="true">☰</span>
+      </button>
       <nav class="nav" id="menu-dinamico"></nav>
     </div>
   </header>
@@ -22,13 +26,13 @@
     </div>
 
     <section class="filtros">
-      <input type="text" id="filtro-busca" placeholder="🔍 Buscar por alimento ou barraca..." />
+      <input type="text" id="filtro-busca" placeholder="Buscar por alimento ou barraca..." />
       <select id="filtro-feira"><option value="todas">Todas as feiras</option></select>
     </section>
 
     <section class="grid-ofertas" id="lista-ofertas"></section>
     <div id="msg-vazio" class="msg-vazio" style="display: none;">
-      <h3>Nenhuma oferta encontrada 😕</h3>
+      <h3>Nenhuma oferta encontrada.</h3>
     </div>
   </main>
 

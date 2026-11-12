@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="CSS/inicio.css" />
   <link rel="stylesheet" href="CSS/cadastro.css" />
   <link rel="stylesheet" href="CSS/sobre.css" />
+  <link rel="stylesheet" href="CSS/navegacao.css" />
 </head>
 <body>
 
@@ -16,11 +17,8 @@
             <img src="IMG/LogoSemFundo.png" alt="Logo FeiraCircular" class="logo-img">
         </a>
     
-        <!-- Botão Hambúrguer (aparece apenas no mobile via CSS) -->
-        <button class="menu-hamburguer" id="btn-menu" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="menu-hamburger" type="button" data-menu-toggle aria-controls="menu-dinamico" aria-expanded="false" aria-label="Abrir menu">
+            <span aria-hidden="true">☰</span>
         </button>
 
         <nav class="nav" id="menu-dinamico">
@@ -52,15 +50,15 @@
       
       <div class="solucoes-grid">
         <div class="solucao-card">
-          <h3>🛒 Venda com Desconto</h3>
+          <h3>Venda com Desconto</h3>
           <p>Consumidores consultam ofertas de última hora, visualizam preços reduzidos e quantidades, realizando reservas para retirada direta na barraca.</p>
         </div>
         <div class="solucao-card">
-          <h3>🤝 Doações para ONGs</h3>
+          <h3>Doações para ONGs</h3>
           <p>Organizações sociais cadastradas localizam alimentos próprios para consumo destinados à doação e solicitam a retirada de forma ágil.</p>
         </div>
         <div class="solucao-card">
-          <h3>📊 Painel do Feirante</h3>
+          <h3>Painel do Feirante</h3>
           <p>Ferramenta para o feirante recuperar receita, divulgar sua barraca digitalmente e acompanhar o controle de perdas e histórico de operações.</p>
         </div>
       </div>
@@ -95,5 +93,6 @@
 
   <!-- SCRIPTS -->
   <script src="JS/auth.js"></script>
+  <script src="JS/sobre.js"></script>
 </body>
 </html>
