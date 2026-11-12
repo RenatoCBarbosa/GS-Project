@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Vitrine de alimentos anunciados para venda com desconto. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -25,17 +26,20 @@
       <p>Apoie os feirantes comprando alimentos bons, por um preço justo.</p>
     </div>
 
+    <!-- Estes controles filtram os cartões criados em JS/ofertas.js. -->
     <section class="filtros">
       <input type="text" id="filtro-busca" placeholder="Buscar por alimento ou barraca..." />
       <select id="filtro-feira"><option value="todas">Todas as feiras</option></select>
     </section>
 
+    <!-- O JavaScript coloca aqui as ofertas e mostra um aviso quando não há resultados. -->
     <section class="grid-ofertas" id="lista-ofertas"></section>
     <div id="msg-vazio" class="msg-vazio" style="display: none;">
       <h3>Nenhuma oferta encontrada.</h3>
     </div>
   </main>
 
+  <!-- auth.js monta o menu; ofertas.js pesquisa, mostra e reserva alimentos. -->
   <script src="JS/auth.js"></script>
   <script src="JS/ofertas.js"></script>
 </body>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Página de entrada após a escolha do perfil; o conteúdo muda conforme quem está usando. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -9,6 +10,7 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
+  <!-- O JavaScript preenche este menu com os links permitidos para cada perfil. -->
   <header class="header">
     <div class="container header__inner">
       <a href="inicio.html" class="logo"><img src="IMG/LogoSemFundo.png" alt="Logo" class="logo-img"></a>
@@ -19,6 +21,7 @@
     </div>
   </header>
 
+  <!-- Saudação, atalhos e resumo são preenchidos pelo JS/inicio.js. -->
   <main class="container main">
     <div class="welcome-section">
       <h1 id="saudacao">Carregando...</h1>
@@ -28,6 +31,7 @@
     <div class="resumo-dia" id="resumo-dia" style="display: none;"></div>
   </main>
 
+  <!-- auth.js monta o menu; inicio.js escolhe a saudação e os atalhos. -->
   <script src="JS/auth.js"></script>
   <script src="JS/inicio.js"></script>
 </body>

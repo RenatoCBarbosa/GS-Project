@@ -1,11 +1,8 @@
+// Executado quando a pessoa escolhe um dos cartões da página inicial.
 function selecionarPerfil(perfil) {
-  // 1. Salva a escolha no navegador para o site inteiro saber quem é o usuário
+  // O localStorage mantém o perfil escolhido entre páginas no mesmo navegador.
   localStorage.setItem('feiracircular_perfil', perfil);
 
-  // 2. Dá um feedback rápido (opcional, mas bom para o usuário saber que funcionou)
-  // Você pode remover o alert se achar que demora muito.
-  // alert(`Você entrou como: ${perfil.toUpperCase()}`);
-
-  // 3. Redireciona para a página inicial (Vitrine)
+  // Depois da escolha, leva a pessoa à tela inicial personalizada.
   window.location.href = 'inicio.html';
 }

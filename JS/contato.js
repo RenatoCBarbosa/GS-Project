@@ -1,8 +1,10 @@
+// Valida os campos de contato e exibe uma confirmação local quando todos estão corretos.
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form-contato");
   const msgSucesso = document.getElementById("msg-sucesso");
 
   form.addEventListener("submit", function (e) {
+    // Impede o recarregamento da página enquanto a validação acontece.
     e.preventDefault(); // Impede o envio padrão
 
     // Captura dos campos
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let formValidado = true;
 
     // Função auxiliar para exibir erro
+    // Estas funções mostram o erro ao lado do campo ou limpam o aviso anterior.
     function mostrarErro(input, spanId, mensagemErro) {
       input.style.borderColor = "#e74c3c";
       document.getElementById(spanId).textContent = mensagemErro;
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Se tudo estiver válido, simula o envio com sucesso
+    // Só mostra sucesso quando todos os campos passaram pelas verificações.
     if (formValidado) {
       form.style.display = "none";
       msgSucesso.style.display = "block";

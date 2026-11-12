@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Formulário do perfil: os campos extras aparecem conforme o tipo de usuário. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -60,6 +61,7 @@
         </div>
 
         <!-- Campos Exclusivos do FEIRANTE (Escondidos por padrão) -->
+        <!-- O JS mostra esta seção apenas para quem escolheu o perfil de feirante. -->
         <div class="form-section" id="secao-feirante" style="display: none;">
           <h2>Dados da Barraca</h2>
           <div class="form-row">
@@ -75,6 +77,7 @@
         </div>
 
         <!-- Campos Exclusivos da ONG (Escondidos por padrão) -->
+        <!-- O JS mostra esta seção apenas para quem escolheu o perfil de ONG. -->
         <div class="form-section" id="secao-ong" style="display: none;">
           <h2>Dados da Organização</h2>
           <div class="form-row">
@@ -94,6 +97,7 @@
     </div>
   </main>
 
+  <!-- O primeiro arquivo cria o menu; o segundo controla este formulário. -->
   <script src="JS/auth.js"></script>
   <script src="JS/cadastro-usuario.js"></script>
 </body>

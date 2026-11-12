@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Página de contato com validação local e atalhos para conversar pelo WhatsApp. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -36,6 +37,7 @@
 
     <div class="form-container">
       <!-- Formulário com validação -->
+      <!-- novalidate deixa a validação visual dos campos a cargo de contato.js. -->
       <form id="form-contato" novalidate>
         <div class="form-section">
           <h2>Envie sua mensagem</h2>
@@ -75,13 +77,14 @@
       </form>
 
       <!-- Feedback de Sucesso -->
+      <!-- contato.js mostra esta confirmação depois de validar o formulário. -->
       <div id="msg-sucesso" class="msg-sucesso" style="display: none;">
         <h3>Mensagem enviada com sucesso!</h3>
         <p>Agradecemos o contato. Retornaremos em breve.</p>
       </div>
     </div>
   </main>
-
+  <!-- auth.js monta o menu; contato.js valida os campos e mostra a confirmação. -->
   <!-- BOTÃO FLUTUANTE DO WHATSAPP (FIXO NA TELA) -->
   <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20FeiraCircular!" 
      target="_blank" 

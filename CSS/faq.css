@@ -1,4 +1,4 @@
-/*ESTILOS DA BARRA DE PESQUISA DO FAQ */
+/* Estilos da busca e do acordeão: a classe "active" abre uma pergunta e sua resposta. */
 
 .faq-search-container {
   max-width: 800px;
@@ -23,7 +23,7 @@
   box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
 }
 
-/* ESTILOS DA PÁGINA FAQ (ACORDEÃO) */
+/* Cada pergunta parece um cartão; as respostas fechadas ficam escondidas. */
 
 .faq-container {
   max-width: 800px;
@@ -94,9 +94,7 @@
   transform: rotate(45deg); /* Transforma o + em um x / seta inclinada */
 }
 
-/* ==========================================
-   BOTÃO FLUTUANTE DO WHATSAPP (FIXO)
-   ========================================== */
+/* Mantém o atalho do WhatsApp visível no canto da tela. */
 
 .whatsapp-float {
   position: fixed !important;

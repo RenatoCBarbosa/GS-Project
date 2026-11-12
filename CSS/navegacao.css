@@ -1,3 +1,4 @@
+/* Mantém o cabeçalho compartilhado e transforma os links em menu suspenso no celular. */
 .header__inner {
   position: relative;
 }

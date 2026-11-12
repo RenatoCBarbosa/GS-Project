@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Perguntas frequentes com busca e respostas que podem ser abertas e fechadas. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -38,6 +39,7 @@
       <input type="text" id="faq-search" placeholder="Pesquise por uma dúvida (ex.: feirante, taxa, cadastro)..." />
     </div>
 
+    <!-- faq.js filtra estas perguntas e abre somente uma resposta por vez. -->
     <div class="faq-container" id="faq-lista">
       
       <!-- Pergunta 1 -->
@@ -101,11 +103,12 @@
     </div>
 
     <!-- Mensagem de Nenhum Resultado -->
+    <!-- Esta mensagem aparece apenas quando a busca não encontra perguntas. -->
     <div id="faq-vazio" style="display: none; text-align: center; margin-top: 30px; color: #666;">
       <p>Nenhuma dúvida encontrada com esse termo. Tente usar outras palavras ou entre em contato conosco!</p>
     </div>
   </main>
-
+  <!-- auth.js monta o menu; faq.js controla a pesquisa e o acordeão. -->
   <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
   <a href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20FeiraCircular!" 
      target="_blank" 

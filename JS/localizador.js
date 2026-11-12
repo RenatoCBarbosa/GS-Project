@@ -1,3 +1,4 @@
+// Feiras e coordenadas aproximadas usadas nesta demonstração do localizador.
 const feiras = [
   {
     nome: 'Feira da Vila Mariana',
@@ -15,6 +16,7 @@ const feiras = [
 
 let localizacaoUsuario = null;
 
+// Estima a distância em linha reta entre dois pontos usando suas coordenadas.
 function calcularDistanciaKm(origem, destino) {
   const radianos = valor => valor * Math.PI / 180;
   const deltaLatitude = radianos(destino.latitude - origem.latitude);
@@ -27,6 +29,7 @@ function calcularDistanciaKm(origem, destino) {
   return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+// Cria os cartões de feira; quando há localização, mostra as mais próximas primeiro.
 function renderizarFeiras() {
   const container = document.getElementById('lista-feiras');
   const feirasOrdenadas = feiras
@@ -82,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   montarMenu('localizador');
   renderizarFeiras();
 
+  // Aguarda o clique da pessoa antes de solicitar ao navegador sua localização.
   document.getElementById('btn-localizacao').addEventListener('click', () => {
     const status = document.getElementById('localizador-status');
     if (!navigator.geolocation) {
@@ -89,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Atualiza as distâncias e os links de rota depois de receber a posição.
     status.textContent = 'Buscando sua localização...';
     navigator.geolocation.getCurrentPosition(
       position => {

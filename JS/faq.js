@@ -1,9 +1,11 @@
+// Controla a busca e a abertura das respostas na página de perguntas frequentes.
 document.addEventListener("DOMContentLoaded", () => {
   const faqItems = document.querySelectorAll(".faq-item");
   const searchInput = document.getElementById("faq-search");
   const msgVazio = document.getElementById("faq-vazio");
 
   // Funcionalidade do Acordeão (Abrir/Fechar)
+  // O acordeão mantém no máximo uma resposta aberta por vez.
   faqItems.forEach((item) => {
     const questionButton = item.querySelector(".faq-question");
 
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Funcionalidade da Barra de Pesquisa em Tempo Real
+  // Filtra as perguntas enquanto a pessoa digita, comparando pergunta e resposta.
   searchInput.addEventListener("input", (e) => {
     const termo = e.target.value.toLowerCase().trim();
     let encontrouResultados = false;

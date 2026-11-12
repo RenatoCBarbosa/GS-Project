@@ -1,10 +1,14 @@
+// Funções compartilhadas pelas páginas que têm menu ou suporte para instalação como app.
+
 /* =========================================================
    1. FUNÇÃO DO MENU DINÂMICO
    ========================================================= */
 function montarMenu(paginaAtiva) {
+  // Se a página não tiver área de navegação, não há menu para montar.
   const menu = document.getElementById('menu-dinamico');
   if (!menu) return;
 
+  // O perfil fica salvo neste navegador para o site saber quais links mostrar.
   const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
   const linksPorPerfil = {
     feirante: [
@@ -28,9 +32,11 @@ function montarMenu(paginaAtiva) {
     ]
   };
   const links = linksPorPerfil[perfil] || linksPorPerfil.cliente;
+  // O terceiro valor identifica a página atual e destaca seu link no menu.
   const htmlLinks = links.map(([href, texto, pagina]) =>
     `<a href="${href}" class="nav__btn ${paginaAtiva === pagina ? 'active' : ''}">${texto}</a>`
   );
+  // Estas páginas são informativas e aparecem para todos os perfis.
   const linksInstitucionais = [
     ['localizador', 'localizador.html', 'Feiras próximas'],
     ['sobre', 'sobre.html', 'Sobre'],
@@ -41,6 +47,7 @@ function montarMenu(paginaAtiva) {
   htmlLinks.push(...linksInstitucionais.map(([pagina, href, texto]) =>
     `<a href="${href}" class="nav__btn ${paginaAtiva === pagina ? 'active' : ''}">${texto}</a>`
   ));
+  // Ao sair, remove somente a escolha de perfil deste navegador.
   htmlLinks.push('<a href="index.html" class="nav__btn btn-sair" data-sair>Sair</a>');
   menu.innerHTML = htmlLinks.join('');
   menu.querySelector('[data-sair]').addEventListener('click', () => {
@@ -49,6 +56,7 @@ function montarMenu(paginaAtiva) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Descobre a página atual pelo nome do arquivo para destacar o link correto.
   const botaoMenu = document.querySelector('[data-menu-toggle]');
   const menu = document.getElementById('menu-dinamico');
   if (!menu) return;
@@ -58,11 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
   montarMenu(paginaAtiva);
   if (!botaoMenu) return;
 
+  // Em telas pequenas, o botão abre/fecha o menu e atualiza seu estado acessível.
   botaoMenu.addEventListener('click', () => {
     const aberto = menu.classList.toggle('nav-ativa');
     botaoMenu.setAttribute('aria-expanded', String(aberto));
   });
 
+  // A tecla Escape também fecha o menu e devolve o foco ao botão.
   document.addEventListener('keydown', evento => {
     if (evento.key === 'Escape' && menu.classList.contains('nav-ativa')) {
       menu.classList.remove('nav-ativa');
@@ -71,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// O Service Worker permite guardar páginas no cache para abrir o site mais rápido.
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js')

@@ -1,3 +1,4 @@
+// Controla o formulário que publica alimentos excedentes para a comunidade.
 document.addEventListener('DOMContentLoaded', () => {
   // Monta o menu (a função vem do auth.js)
   montarMenu('cadastro');
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputPrecoDesconto = document.querySelector('input[name="precoDesconto"]');
 
   // Regra de UX: Desativa o preço se for doação
+  // Em uma doação, o alimento é gratuito; por isso o preço com desconto é desativado.
   selectTipo.addEventListener('change', (e) => {
     if (e.target.value === 'doacao') {
       inputPrecoDesconto.value = '';
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Ação de Salvar
+  // Interrompe o envio padrão do navegador para validar e salvar a oferta localmente.
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -29,12 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const precoOriginal = parseFloat(formData.get('precoOriginal')) || 0;
     let precoDesconto = parseFloat(formData.get('precoDesconto')) || 0;
 
+    // Uma venda precisa ter preço promocional menor que o preço original.
     if (tipo !== 'doacao' && precoDesconto >= precoOriginal) {
       alert('O preço com desconto deve ser menor que o preço original.');
       return;
     }
     if (tipo === 'doacao') precoDesconto = 0;
 
+    // Agrupa os campos do formulário em um objeto que pode ser guardado como JSON.
     const novaOferta = {
       id: Date.now(),
       barraca: formData.get('barraca').trim(),
@@ -47,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       horario: formData.get('horario')
     };
 
+    // Lê as ofertas anteriores, acrescenta a nova e salva a lista no navegador.
     const dadosSalvos = localStorage.getItem('feiracircular_ofertas');
     let todasAsOfertas = dadosSalvos ? JSON.parse(dadosSalvos) : [];
     

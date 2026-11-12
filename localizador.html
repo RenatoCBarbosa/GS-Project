@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Localizador de demonstração: pede permissão para mostrar distâncias aproximadas até feiras. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -28,6 +29,7 @@
       <p>Compartilhe sua localização para ordenar os pontos de referência pela distância. As localizações abaixo são aproximadas e servem para demonstração.</p>
     </header>
 
+    <!-- O navegador só compartilha a posição após a pessoa clicar e autorizar. -->
     <section class="localizador-acoes" aria-label="Localização">
       <button type="button" class="btn" id="btn-localizacao">Usar minha localização</button>
       <p class="localizador-status" id="localizador-status" role="status" aria-live="polite">
@@ -35,9 +37,11 @@
       </p>
     </section>
 
+    <!-- localizador.js desenha os cartões das feiras e seus links de mapa neste espaço. -->
     <section class="grid-feiras" id="lista-feiras" aria-label="Feiras cadastradas"></section>
   </main>
 
+  <!-- auth.js cuida do menu; localizador.js calcula distâncias e monta os cartões. -->
   <script src="JS/auth.js"></script>
   <script src="JS/localizador.js"></script>
 </body>

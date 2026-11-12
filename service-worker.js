@@ -1,4 +1,6 @@
+// O nome da versão muda quando a lista de arquivos do aplicativo é atualizada.
 const CACHE_NAME = 'feiracircular-v6';
+// Arquivos principais salvos para abrir as páginas mesmo sem conexão.
 const urlsToCache = [
   './index.html',
   './inicio.html',
@@ -44,7 +46,7 @@ const urlsToCache = [
   './IMG/TresFolhas.png'
 ];
 
-// Instala o Service Worker e salva os arquivos no cache
+// Na instalação, guarda os arquivos e ativa esta versão sem esperar fechar abas.
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -56,8 +58,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Intercepta as requisições: se estiver no cache, usa o cache. Senão, busca na internet.
-// Remove versões antigas do cache e assume as páginas abertas com a versão atualizada.
+// Ao ativar uma versão nova, apaga apenas caches antigos deste aplicativo.
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
@@ -69,6 +70,7 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Para arquivos locais, tenta usar o cache; se não encontrar, busca na internet.
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) {
     return;

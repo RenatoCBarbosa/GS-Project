@@ -1,11 +1,13 @@
+// Mostra as ofertas destinadas à doação e registra as solicitações feitas por ONGs.
 let todasAsOfertas = [];
 
 document.addEventListener('DOMContentLoaded', () => {
   montarMenu('doacoes');
   
-  // Proteção: só ONG acessa essa página (ou cliente/feirante visualiza mas não interage)
+  // Nesta demonstração, o perfil apenas ativa ou desativa o botão; não é autenticação real.
   const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
 
+  // Lê ofertas e preenche o filtro com as feiras que realmente têm anúncios.
   const dadosSalvos = localStorage.getItem('feiracircular_ofertas');
   todasAsOfertas = dadosSalvos ? JSON.parse(dadosSalvos) : [];
 
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderizarDoacoes() {
+  // Exibe somente doações com estoque que correspondam à busca e à feira escolhida.
   const container = document.getElementById('lista-doacoes');
   const msgVazio = document.getElementById('msg-vazio');
   const termoBusca = document.getElementById('filtro-busca').value.toLowerCase();
@@ -47,6 +50,7 @@ function renderizarDoacoes() {
     msgVazio.style.display = 'none';
   }
 
+  // O botão de solicitar fica ativo para ONG; nos demais perfis é apenas informativo.
   doacoesFiltradas.forEach(oferta => {
     const card = document.createElement('div');
     card.className = 'card-oferta';
@@ -108,6 +112,7 @@ function renderizarDoacoes() {
 }
 
 function solicitarDoacao(idOferta, quantidadeSolicitada) {
+  // Confere se existe estoque suficiente antes de confirmar a solicitação.
   const oferta = todasAsOfertas.find(o => o.id === idOferta);
   if (!oferta) return;
 
@@ -120,6 +125,7 @@ function solicitarDoacao(idOferta, quantidadeSolicitada) {
     return;
   }
 
+  // Salva o novo estoque e registra a solicitação para os painéis e históricos.
   oferta.quantidade -= quantidadeSolicitada;
   localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
 

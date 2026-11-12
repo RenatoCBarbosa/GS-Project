@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Formulário usado pelo feirante para publicar alimentos disponíveis para venda ou doação. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -30,6 +31,7 @@
     </div>
 
     <div class="form-container">
+      <!-- Os campos com "required" precisam ser preenchidos antes da publicação. -->
       <form id="form-cadastro">
         <div class="form-section">
           <h2>1. Identificação</h2>
@@ -70,7 +72,7 @@
     </div>
   </main>
 
-  <!-- IMPORTANTE: Chamar o auth.js ANTES do cadastro.js -->
+  <!-- auth.js deve carregar primeiro porque cadastro.js usa a função de menu definida nele. -->
   <script src="JS/auth.js"></script>
   <script src="JS/cadastro.js"></script>
 </body>

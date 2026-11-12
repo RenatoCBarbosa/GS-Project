@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Mural para ONGs consultarem alimentos que os feirantes disponibilizaram para doação. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -25,17 +26,20 @@
       <p>Espaço exclusivo para Organizações Sociais. Encontre alimentos próprios para consumo e solicite a retirada.</p>
     </div>
 
+    <!-- A busca e o seletor de feira filtram as doações mostradas abaixo. -->
     <section class="filtros">
       <input type="text" id="filtro-busca" placeholder="Buscar alimento ou barraca..." />
       <select id="filtro-feira"><option value="todas">Todas as feiras</option></select>
     </section>
 
+    <!-- JS/doacoes.js cria os cartões de doação dentro desta seção. -->
     <section class="grid-ofertas" id="lista-doacoes"></section>
     <div id="msg-vazio" class="msg-vazio" style="display: none;">
       <h3>Nenhuma doação disponível agora.</h3>
     </div>
   </main>
 
+  <!-- auth.js monta o menu; doacoes.js permite filtrar e solicitar alimentos. -->
   <script src="JS/auth.js"></script>
   <script src="JS/doacoes.js"></script>
 </body>

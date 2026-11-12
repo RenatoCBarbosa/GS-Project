@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Histórico para consumidores e ONGs; os dados exibidos dependem do perfil escolhido. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -28,8 +29,10 @@
       <p id="descricao-painel">Acompanhe suas reservas de alimentos.</p>
     </header>
 
+    <!-- painel-usuario.js cria aqui os cartões com totais do perfil atual. -->
     <section class="grid-resumo" id="resumo-painel" aria-label="Resumo da atividade"></section>
 
+    <!-- O histórico também é montado pelo JavaScript a partir dos dados locais. -->
     <section class="tabela-container">
       <h2 id="titulo-historico">Minhas reservas</h2>
       <table class="tabela">
@@ -47,6 +50,7 @@
     </section>
   </main>
 
+  <!-- auth.js cria o menu; painel-usuario.js preenche os resumos e a tabela. -->
   <script src="JS/auth.js"></script>
   <script src="JS/painel-usuario.js"></script>
 </body>

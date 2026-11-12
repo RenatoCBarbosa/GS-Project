@@ -1,5 +1,7 @@
+// Lista as ofertas guardadas neste navegador e controla as reservas do consumidor.
 let todasAsOfertas = [];
 
+// Mostra preços no formato usado no Brasil, como R$ 4,00.
 function formatarMoeda(valor) {
   return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dadosSalvos = localStorage.getItem('feiracircular_ofertas');
   todasAsOfertas = dadosSalvos ? JSON.parse(dadosSalvos) : [];
 
+  // Quando não há ofertas salvas, cria exemplos para demonstrar a vitrine.
   if (todasAsOfertas.length === 0) {
     todasAsOfertas = [
       { id: 1, barraca: "Barraca do Zé", local: "Feira da Vila Mariana", alimento: "Tomate Italiano", quantidade: 12, precoOriginal: 8.50, precoDesconto: 4.00, tipo: "venda" },
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
   }
 
+  // Coloca no seletor cada feira sem repetir nomes.
   const selectFeira = document.getElementById('filtro-feira');
   const feirasUnicas = [...new Set(todasAsOfertas.map(o => o.local))];
   feirasUnicas.forEach(feira => {
@@ -34,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderizarOfertas() {
+  // A busca, a feira escolhida, o tipo e o estoque determinam o que aparece.
   const container = document.getElementById('lista-ofertas');
   const msgVazio = document.getElementById('msg-vazio');
   const termoBusca = document.getElementById('filtro-busca').value.toLowerCase();
@@ -57,6 +62,7 @@ function renderizarOfertas() {
     msgVazio.style.display = 'none';
   }
 
+  // Calcula o desconto e monta os cartões sem inserir dados do anúncio como HTML.
   ofertasFiltradas.forEach(oferta => {
     const desconto = oferta.precoOriginal > 0
       ? Math.round(((oferta.precoOriginal - oferta.precoDesconto) / oferta.precoOriginal) * 100)
@@ -129,6 +135,7 @@ function renderizarOfertas() {
 }
 
 function fazerReserva(idOferta, quantidadeReservada) {
+  // Valida a quantidade antes de alterar o estoque e o histórico.
   const oferta = todasAsOfertas.find(o => o.id === idOferta);
   if (!oferta) return;
 
@@ -141,9 +148,11 @@ function fazerReserva(idOferta, quantidadeReservada) {
     return;
   }
 
+  // Atualiza o estoque para que a próxima visita veja a quantidade restante.
   oferta.quantidade -= quantidadeReservada;
   localStorage.setItem('feiracircular_ofertas', JSON.stringify(todasAsOfertas));
 
+  // Guarda a operação geral e o registro que aparece no histórico do consumidor.
   const historicoSalvo = localStorage.getItem('feiracircular_historico');
   let historico = historicoSalvo ? JSON.parse(historicoSalvo) : [];
   

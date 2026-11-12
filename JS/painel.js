@@ -1,6 +1,8 @@
+// Calcula os resultados do feirante e mostra cada venda ou doação registrada.
 document.addEventListener('DOMContentLoaded', () => {
   montarMenu('painel');
 
+  // Carrega do navegador o histórico compartilhado pelas operações da demonstração.
   const historicoSalvo = localStorage.getItem('feiracircular_historico');
   let historico = historicoSalvo ? JSON.parse(historicoSalvo) : [];
 
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let kgDoados = 0;
   const corpoTabela = document.getElementById('corpo-tabela');
   
+  // Percorre o histórico para preencher a tabela e somar receita e quilos doados.
   if (corpoTabela) {
     corpoTabela.innerHTML = '';
 
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         corpoTabela.appendChild(tr);
 
+        // Converte os valores que já estão formatados em texto para poder somá-los.
         if (item.operacao === 'Venda com desconto') {
           const valorLimpo = item.valor.replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
           const valorNumerico = parseFloat(valorLimpo);

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Esta é a primeira tela: nela a pessoa escolhe se vai usar o site como feirante, consumidor ou ONG. -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -6,8 +7,10 @@
   <title>Início — FeiraCircular</title>
   
   <!-- LINHA DO PWA AQUI -->
+  <!-- O manifesto informa ao navegador como instalar o site como aplicativo. -->
   <link rel="manifest" href="manifest.json" />
 
+  <!-- Este CSS cuida do fundo e dos cartões de escolha de perfil. -->
   <link rel="stylesheet" href="CSS/style.css" />
 </head>
 <body class="tela-selecao">
@@ -25,6 +28,7 @@
     </div>
 
     <!-- Cartões de Perfil -->
+    <!-- Cada cartão salva um perfil e leva a pessoa para a tela inicial. -->
     <div class="grid-perfis">
       
       <!-- Cartão Feirante -->
@@ -54,7 +58,7 @@
     </div>
 
   </div>
-  <!--Scripts-->
+  <!-- Este script guarda o perfil escolhido e abre a página inicial. -->
   <script src="JS/script.js"></script>
 </body>
 </html>

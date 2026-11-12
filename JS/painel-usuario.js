@@ -1,4 +1,6 @@
+// Mostra reservas de consumidores ou solicitações de doação de ONGs.
 document.addEventListener('DOMContentLoaded', () => {
+  // O mesmo HTML serve aos dois perfis; os títulos mudam conforme a pessoa.
   const perfil = localStorage.getItem('feiracircular_perfil') || 'cliente';
   const ehOng = perfil === 'ong';
   montarMenu('painel-usuario');
@@ -13,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ? 'Doações solicitadas'
     : 'Minhas reservas';
 
+  // Mantém apenas o tipo de registro que pertence ao perfil atual.
   const dadosSalvos = localStorage.getItem('feiracircular_minhas_reservas');
   const registros = dadosSalvos ? JSON.parse(dadosSalvos) : [];
   const tipoEsperado = ehOng ? 'doacao' : 'reserva';
   const registrosDoPerfil = registros.filter(registro =>
     registro.tipo ? registro.tipo === tipoEsperado : !ehOng
   );
+  // Os dados antigos podem conter quantidade como número ou como texto.
   const lerQuantidade = registro => {
     const quantidade = Number.parseFloat(String(registro.qtd).replace(',', '.'));
     return Number.isFinite(quantidade) ? quantidade : 0;
@@ -28,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return total + quantidade;
   }, 0);
 
+  // Monta os cartões de resumo sem precisar manter totais separados.
   const resumo = document.getElementById('resumo-painel');
   const cards = [
     [ehOng ? 'Solicitações registradas' : 'Reservas realizadas', registrosDoPerfil.length],
@@ -45,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resumo.appendChild(card);
   });
 
+  // Se não houver atividade, mostra uma explicação em vez de uma tabela vazia.
   const corpo = document.getElementById('corpo-historico');
   if (registrosDoPerfil.length === 0) {
     const linha = document.createElement('tr');
